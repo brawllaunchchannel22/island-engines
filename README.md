@@ -1,4 +1,4 @@
-# 🚂 Thomas Productions — Video Credits & Asset Attribution
+# 🚂 Island Engines
 
 A searchable catalog of 3D models, scenery assets, modded routes, and music reorchestrations that may be used across **Thomas Productions** videos.
 
