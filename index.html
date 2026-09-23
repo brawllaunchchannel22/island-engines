@@ -12,188 +12,205 @@
 <body>
 
   <!-- AI Transparency Notice -->
-  <div class="ai-transparency-banner">
+  <div class="ai-notice-bar">
     🤖 <strong>AI Transparency:</strong> This website code, tools, and asset scanner were built with <span>AI assistance</span> for open development.
   </div>
 
-  <!-- Classic Sodor Community Pill Header -->
-  <header class="site-header">
-    <div class="nav-pill-wrapper">
-      <a href="#home" class="nav-pill-brand">🚂 ISLAND ENGINES</a>
-      <a href="#home" class="nav-pill-link active">Home</a>
-      <a href="#episodes" class="nav-pill-link">Episodes</a>
-      <a href="#sites" class="nav-pill-link">Other Sites</a>
-      <a href="#tools" class="nav-pill-link">Tools</a>
-      <a href="./credits/" class="nav-pill-link credits-pill" title="6,100+ Curated Community Assets">📋 Video Credits</a>
+  <!-- Studio Header & Navigation -->
+  <header class="site-nav-header">
+    <div class="container nav-inner">
+      <a href="#home" class="studio-brand">
+        <div class="studio-logo-badge">🚂</div>
+        <div class="studio-title-box">
+          <h1>Island Engines</h1>
+          <p>Trainz Fan Production</p>
+        </div>
+      </a>
+      <nav class="nav-links-row">
+        <a href="#home" class="nav-item active">Home</a>
+        <a href="#episodes" class="nav-item">Episodes</a>
+        <a href="#workshops" class="nav-item">Community Workshops</a>
+        <a href="#tools" class="nav-item">Tools</a>
+        <a href="./credits/" class="nav-item credits-btn">📋 Video Credits</a>
+      </nav>
     </div>
   </header>
 
   <main class="container">
 
-    <!-- Atmospheric Hero Section -->
-    <section class="hero-section" id="home">
-      <div class="hero-subtitle-badge">★ A Trainz Railroad Simulator Fan Production ★</div>
-      <h1 class="hero-title">ISLAND <span>ENGINES</span></h1>
-      <p class="hero-tagline">
-        Stories of steam, pride, and heritage on the North Western Railway.
-        Filmed in TRS22 with custom soundscapes, Milo the Otter orchestral reorchestrations, and authentic community 3D models.
+    <!-- Hero Section -->
+    <section class="cinematic-hero" id="home">
+      <div class="hero-tag">★ An Original Sodor Series Production</div>
+      <h2 class="hero-heading">Welcome to <span>Island Engines</span></h2>
+      <p class="hero-description">
+        Classic railway storytelling brought to life in Trainz Railroad Simulator 2022. 
+        Featuring atmospheric lighting, custom soundscapes, Milo the Otter orchestral scores, 
+        and authentic community craftsmanship.
       </p>
       <div class="hero-actions">
-        <a href="#episodes" class="btn-steam primary">▶ Episode 1: Slippery Rails</a>
-        <a href="./credits/" class="btn-steam secondary">📋 Full Video Credits (6,100+ Assets)</a>
-        <a href="#sites" class="btn-steam secondary">🌐 Community Workshops</a>
+        <a href="#episodes" class="btn-hero-primary">▶ Episode 1: Slippery Rails</a>
+        <a href="./credits/" class="btn-hero-secondary">📋 Explore Video Credits (6,100+ Assets)</a>
+        <a href="#workshops" class="btn-hero-secondary">🌐 Community Workshops Directory</a>
       </div>
     </section>
 
-    <!-- Episode 1 Feature Showcase (Direct from Story Script) -->
-    <section id="episodes" style="margin-bottom: 56px;">
-      <div class="section-heading-box">
-        <h2 class="section-title">🎬 Episode Guide</h2>
-        <p class="section-desc">Classic series storytelling narrated with timeless charm.</p>
-      </div>
-
-      <div class="episode-feature-card">
-        <div class="ep-meta-row">
-          <div class="ep-badge">SEASON 1 • EPISODE 1</div>
-          <div class="ep-status-pill">🎬 In Production / Rendering</div>
-        </div>
-
+    <!-- Episode 1 Showcase (From Project Script) -->
+    <section class="content-section" id="episodes">
+      <div class="section-head">
         <div>
-          <h3 class="ep-title">Slippery Rails</h3>
-          <div class="ep-locations">📍 Locations: Brendam Docks • The Main Line • The Old Hill Loop</div>
-          
-          <p class="ep-synopsis">
-            It is a cold, rain-swept night at Brendam Docks as Henry backs onto a heavy train of fish vans for the Flying Kipper. 
-            When Thomas warns him that rain makes the rails as slick as glass, Henry arrogantly boasts that <em>"a big, strong engine doesn't need advice from a silly little tank engine"</em> and lies that his sandboxes are full.
-            <br><br>
-            Rushing through the gale to escape the smell of fish, Henry misses the points in the fog and is diverted onto the steep, overgrown hill line. 
-            On the muddy gradient, his driving wheels spin violently into useless sparks against the slimy rails. Stranded alone in the pouring rain with the troublesome trucks mocking him in the dark, Henry's pride begins to crumble—until a friendly headlight cuts through the trees...
-          </p>
+          <h2 class="section-title">🎬 Episode Guide</h2>
+          <p class="section-subtitle">Original stories of steam, pride, and heritage on the North Western Railway.</p>
+        </div>
+      </div>
 
-          <div style="font-size: 0.85rem; color: #94a3b8; font-weight: 600; margin-bottom: 10px;">FEATURING:</div>
-          <div class="ep-characters-list">
-            <span class="char-chip">🟢 Henry</span>
-            <span class="char-chip">🔵 Thomas</span>
-            <span class="char-chip">🪵 Troublesome Trucks</span>
-            <span class="char-chip">👥 Henry's Driver & Fireman</span>
-            <span class="char-chip">🎛️ The Signalman</span>
-            <span class="char-chip">🎩 The Fat Controller</span>
-          </div>
+      <div class="episode-card">
+        <div class="ep-header-line">
+          <span class="ep-num-tag">SEASON 1 • EPISODE 1</span>
+          <span class="ep-status-pill">🎬 In Production / Rendering</span>
+        </div>
 
-          <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
-            <a href="https://www.youtube.com/@brawllaunchchannel?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-steam primary">
-              🔔 Subscribe for Premiere Notification
-            </a>
-            <span style="font-size: 0.85rem; color: #64748b; font-style: italic;">
-              Runtime: ~4:30 min • Audio & Score: Milo the Otter
-            </span>
-          </div>
+        <h3 class="ep-main-title">Slippery Rails</h3>
+        <div class="ep-route-trail">
+          📍 <span>Brendam Docks</span> → <span>The Main Line</span> → <span>The Old Hill Loop</span>
+        </div>
+
+        <p class="ep-story-text">
+          On a cold, rain-lashed night at Brendam Docks, Henry is tasked with taking the heavy Flying Kipper fish train. 
+          When Thomas warns him that wet rails are as slick as glass, Henry arrogantly boasts that <em>"a big, strong engine doesn't need advice from a silly little tank engine"</em> and lies that his sandboxes are full.
+          <br><br>
+          Rushing through the gale to escape the smell of fish, Henry misses the points in the fog and is diverted onto the steep, overgrown hill line. 
+          On the muddy gradient, his heavy wheels spin violently into useless sparks against the slimy rails. Stranded alone in the pouring rain with the troublesome trucks mocking him in the dark, Henry's pride begins to crumble—until a friendly headlight cuts through the trees...
+        </p>
+
+        <div class="ep-cast-row">
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Featuring:</span>
+          <span class="cast-badge">🟢 Henry</span>
+          <span class="cast-badge">🔵 Thomas</span>
+          <span class="cast-badge">🪵 Troublesome Trucks</span>
+          <span class="cast-badge">👥 Henry's Driver & Fireman</span>
+          <span class="cast-badge">🎛️ The Signalman</span>
+          <span class="cast-badge">🎩 Sir Topham Hatt</span>
+        </div>
+
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <a href="https://www.youtube.com/@brawllaunchchannel?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
+            🔔 Subscribe on YouTube for Premiere Notification
+          </a>
+          <span style="font-size: 0.86rem; color: var(--text-muted); font-style: italic;">
+            Target Runtime: ~4:30 min • Score: Milo the Otter
+          </span>
         </div>
       </div>
     </section>
 
-    <!-- Other Great Sites (Centered Workshop Badges like Clay Truck Works) -->
-    <section id="sites" class="other-sites-section">
-      <div class="section-heading-box">
-        <h2 class="section-title">🌐 Other Great Sites & Workshops</h2>
-        <p class="section-desc">Explore the creators, modellers, and archives of the Trainz Sodor community.</p>
+    <!-- Community Workshops Directory -->
+    <section class="content-section" id="workshops">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">🌐 Other Great Sites & Community Workshops</h2>
+          <p class="section-subtitle">A curated directory of community 3D modellers, route builders, and workshops.</p>
+        </div>
+        <span id="site-count-indicator" style="font-size: 0.85rem; color: var(--color-coastal-blue); font-weight: 700;">20 workshops cataloged</span>
       </div>
 
-      <!-- Search Box -->
-      <div class="sites-filter-wrap">
+      <div class="directory-search-bar">
         <input 
           type="text" 
           id="site-search-input" 
-          class="sites-search-box" 
-          placeholder="🔍 Search workshops (e.g. Boilersmiths, Crovan's Gate, Mid Sodor, Westernroutes)..." 
+          class="directory-input" 
+          placeholder="🔍 Search community workshops (e.g. Boilersmiths, Crovan's Gate, Mid Sodor, Westernroutes)..." 
         />
       </div>
 
-      <!-- 20 Community Workshop Cards -->
-      <div class="sites-grid" id="community-sites-container">
-        <!-- Rendered dynamically by main.js with emblem badges -->
+      <div class="directory-grid" id="community-sites-container">
+        <!-- Rendered dynamically by main.js -->
       </div>
     </section>
 
-    <!-- Community Tools & Fixer Section -->
-    <section id="tools" style="margin-bottom: 56px;">
-      <div class="section-heading-box">
-        <h2 class="section-title">🛠️ Downloads & Community Utilities</h2>
-        <p class="section-desc">Safe tools for Trainz creators and players.</p>
+    <!-- Downloads & Community Tools -->
+    <section class="content-section" id="tools">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">🛠️ Downloads & Community Tools</h2>
+          <p class="section-subtitle">Helpful, safe utilities for Trainz creators and players.</p>
+        </div>
       </div>
 
-      <div class="tools-showcase-grid">
-        <!-- Universal Fixer Tool Card -->
-        <div class="tool-card">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 0.8rem; font-family: 'Cinzel', serif; color: var(--accent-sky); font-weight: 700;">TRAINZ UTILITY</span>
-            <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 2px 8px; border-radius: var(--radius-pill); font-weight: 700;">v1.0 • Safe</span>
+      <div class="tools-grid">
+        <!-- Universal Fixer Tool Box -->
+        <div class="tool-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-coastal-blue); text-transform: uppercase;">Trainz Utility</span>
+            <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 10px; border-radius: var(--radius-pill); font-weight: 700;">v1.0 • Safe</span>
           </div>
-          <h3 class="tool-card-title">Universal Asset Fixer</h3>
-          <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6;">
-            A safe, non-destructive Python repair utility that fixes stubborn Content Manager errors across TRS19, TRS22, and Trainz Plus.
+
+          <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Trainz Universal Asset Fixer</h3>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
+            A safe, non-destructive Python repair utility designed to resolve Content Manager validation and script errors across TRS19, TRS22, and Trainz Plus.
           </p>
 
-          <ul class="tool-features-list">
-            <li>🛡️ <strong>100% Non-Destructive:</strong> Creates <code>.bak</code> backups before touching files.</li>
-            <li>🧪 <strong>Dry-Run Mode:</strong> Test proposed repairs with <code>--dry-run</code> without editing files.</li>
-            <li>🚂 <strong>VE146 Bogeys:</strong> Safely upgrades old root bogey tags into modern containers.</li>
-            <li>🎨 <strong>Textures & Sounds:</strong> Fixes missing <code>texture.txt</code> and sound stubs (VE10/VE65).</li>
-            <li>💻 <strong>Cross-Platform:</strong> Works on Windows, Linux (Steam/Deck), and macOS.</li>
+          <ul class="tool-feature-check">
+            <li>🛡️ <strong>100% Non-Destructive:</strong> Creates <code>.bak</code> backups before editing any file.</li>
+            <li>🧪 <strong>Dry-Run Mode:</strong> Preview repairs with <code>--dry-run</code> without touching disk.</li>
+            <li>🚂 <strong>VE146 Bogeys:</strong> Upgrades legacy root bogey tags into modern containers.</li>
+            <li>🎨 <strong>Textures & Sounds:</strong> Generates missing <code>texture.txt</code> and clean sound stubs (VE10/VE65).</li>
+            <li>💻 <strong>Cross-Platform:</strong> Works on Windows, Linux (Steam/Proton), and macOS.</li>
           </ul>
 
           <div style="margin-top: auto; display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="./tools/trainz_universal_fixer.py" download="trainz_universal_fixer.py" class="btn-steam primary" style="font-size: 0.85rem; padding: 10px 20px;">
+            <a href="./tools/trainz_universal_fixer.py" download="trainz_universal_fixer.py" class="btn-hero-primary" style="font-size: 0.88rem; padding: 10px 20px;">
               📥 Download Fixer (.py)
             </a>
-            <a href="./tools/README_FIXER.md" target="_blank" class="btn-steam secondary" style="font-size: 0.85rem; padding: 10px 18px;">
-              📖 Guide & Help
+            <a href="./tools/README_FIXER.md" target="_blank" class="btn-hero-secondary" style="font-size: 0.88rem; padding: 10px 18px;">
+              📖 Documentation
             </a>
           </div>
         </div>
 
         <!-- Custom Content Placeholder -->
-        <div class="tool-card" style="border-color: rgba(245, 158, 11, 0.3);">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 0.8rem; font-family: 'Cinzel', serif; color: var(--accent-gold); font-weight: 700;">COMMUNITY RELEASES</span>
-            <span style="font-size: 0.75rem; background: rgba(245, 158, 11, 0.15); color: var(--accent-gold-bright); padding: 2px 8px; border-radius: var(--radius-pill); font-weight: 700;">Coming Soon</span>
+        <div class="tool-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-brass); text-transform: uppercase;">Community Releases</span>
+            <span style="font-size: 0.75rem; background: var(--color-brass-glow); color: var(--color-brass); padding: 2px 10px; border-radius: var(--radius-pill); font-weight: 700;">In Progress</span>
           </div>
-          <h3 class="tool-card-title">Island Engines Custom Reskins</h3>
-          <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6;">
-            Special locomotive liveries, weathered rolling stock, and custom scenic assets developed for the *Island Engines* episodes will be released here with permission from base model creators.
+
+          <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Island Engines Reskins & Assets</h3>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
+            Locomotive reskins, custom rolling stock variants, and scenery items used in *Island Engines* episodes will be made available for download here with permission from original authors.
           </p>
-          <div style="margin-top: auto; padding-top: 24px;">
-            <span style="font-size: 0.85rem; color: #64748b; font-style: italic;">
-              Stay tuned for upcoming CDP packages!
+
+          <div style="margin-top: auto; padding-top: 32px;">
+            <span style="font-size: 0.86rem; color: var(--text-muted); font-style: italic;">
+              Packages will be published alongside new episode releases.
             </span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Comprehensive Credits Banner -->
-    <section style="background: linear-gradient(180deg, rgba(20, 28, 45, 0.9) 0%, rgba(12, 17, 28, 0.95) 100%); border: 2px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-md); padding: 44px 28px; text-align: center; margin-bottom: 56px;">
-      <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: #fff; margin-bottom: 12px;">Full Production Credits & Asset Attribution</h3>
-      <p style="color: #cbd5e1; max-width: 680px; margin: 0 auto 24px auto; font-size: 1.05rem;">
+    <!-- Comprehensive Credits Callout -->
+    <section class="credits-banner">
+      <h3 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 12px;">Full Production Credits & Asset Attribution</h3>
+      <p style="color: var(--text-secondary); max-width: 680px; margin: 0 auto 24px auto; font-size: 1rem; line-height: 1.6;">
         We believe in honest attribution. Explore our comprehensive database of <strong>over 6,100 curated community models</strong>, 
         routes, and 313 Milo the Otter orchestral tracks with KUIDs and creator profiles.
       </p>
-      <a href="./credits/" class="btn-steam primary">
+      <a href="./credits/" class="btn-hero-primary">
         📋 Open Video Credits Catalog
       </a>
     </section>
 
   </main>
 
-  <footer class="site-footer">
+  <footer class="studio-footer">
     <div class="container">
       <p><strong>Island Engines</strong> — An independent fan production filmed in Trainz Railroad Simulator.</p>
-      <p style="margin-top: 6px;">
+      <p>
         <em>Thomas & Friends™</em> is copyright Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family. 
         All models and routes belong to their respective community creators. 
         Orchestral reorchestrations by <a href="https://soundcloud.com" target="_blank" rel="noopener">Milo the Otter</a>.
       </p>
-      <p style="margin-top: 14px; font-size: 0.8rem; color: #475569;">
+      <p style="margin-top: 12px; font-size: 0.78rem; color: var(--text-muted);">
         🤖 Built with AI assistance for code development & open transparency • Hosted on GitHub Pages
       </p>
     </div>

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       domain: "thesudrianboilersmiths.org",
       icon: "🔥",
       tag: "Premier Workshop",
-      desc: "Iconic classic Sodor locomotive, rolling stock, and scenic models for Trainz."
+      desc: "Iconic classic Sodor locomotives, rolling stock, and scenic models for Trainz."
     },
     {
       name: "Toolshed Trainz (MC Bunn)",
@@ -172,6 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2. Render Community Workshops
   const sitesContainer = document.getElementById("community-sites-container");
   const siteSearchInput = document.getElementById("site-search-input");
+  const siteCountIndicator = document.getElementById("site-count-indicator");
 
   function renderSites(query = "") {
     if (!sitesContainer) return;
@@ -183,25 +184,32 @@ document.addEventListener("DOMContentLoaded", () => {
       s.tag.toLowerCase().includes(q)
     );
 
+    if (siteCountIndicator) {
+      siteCountIndicator.textContent = `${filtered.length} workshops cataloged`;
+    }
+
     if (filtered.length === 0) {
       sitesContainer.innerHTML = `
-        <div style="grid-column: 1/-1; text-align: center; padding: 48px; color: #94a3b8;">
-          <p style="font-size: 1.1rem;">No workshops matching "<strong>${escapeHtml(query)}</strong>"</p>
+        <div style="grid-column: 1/-1; text-align: center; padding: 48px; color: var(--text-muted);">
+          <p style="font-size: 1.05rem;">No workshops matching "<strong>${escapeHtml(query)}</strong>"</p>
         </div>
       `;
       return;
     }
 
     sitesContainer.innerHTML = filtered.map(site => `
-      <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="workshop-card">
-        <div class="emblem-wrapper">
-          <span>${site.icon}</span>
+      <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="directory-card">
+        <div class="dir-top-row">
+          <div class="dir-icon-avatar">${site.icon}</div>
+          <div>
+            <div class="dir-title">${escapeHtml(site.name)}</div>
+            <div class="dir-tag">${escapeHtml(site.tag)}</div>
+          </div>
         </div>
-        <div class="workshop-name">${escapeHtml(site.name)}</div>
-        <div class="workshop-badge">${escapeHtml(site.tag)}</div>
-        <div class="workshop-desc" style="margin-top: 12px;">${escapeHtml(site.desc)}</div>
-        <div style="font-size: 0.82rem; color: var(--accent-gold); font-weight: 700; margin-top: auto;">
-          Visit Workshop ↗
+        <div class="dir-desc">${escapeHtml(site.desc)}</div>
+        <div class="dir-footer-action">
+          <span>Visit Workshop</span>
+          <span>↗</span>
         </div>
       </a>
     `).join("");

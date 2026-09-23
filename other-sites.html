@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Other Great Sites — Island Engines Community Directory</title>
+  <title>Community Workshops — Island Engines Directory</title>
   <meta name="description" content="A curated directory of community workshops, 3D modellers, and resources in the Trainz Thomas & Friends community." />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,48 +12,60 @@
 <body>
 
   <!-- AI Transparency Notice -->
-  <div class="ai-transparency-banner">
+  <div class="ai-notice-bar">
     🤖 <strong>AI Transparency:</strong> This directory was curated and coded with <span>AI assistance</span> for open development.
   </div>
 
-  <!-- Classic Sodor Pill Header -->
-  <header class="site-header">
-    <div class="nav-pill-wrapper">
-      <a href="index.html#home" class="nav-pill-brand">🚂 ISLAND ENGINES</a>
-      <a href="index.html#home" class="nav-pill-link">Home</a>
-      <a href="index.html#episodes" class="nav-pill-link">Episodes</a>
-      <a href="other-sites.html" class="nav-pill-link active">Other Sites</a>
-      <a href="index.html#tools" class="nav-pill-link">Tools</a>
-      <a href="./credits/" class="nav-pill-link credits-pill">📋 Video Credits</a>
+  <!-- Header -->
+  <header class="site-nav-header">
+    <div class="container nav-inner">
+      <a href="index.html#home" class="studio-brand">
+        <div class="studio-logo-badge">🚂</div>
+        <div class="studio-title-box">
+          <h1>Island Engines</h1>
+          <p>Community Directory</p>
+        </div>
+      </a>
+      <nav class="nav-links-row">
+        <a href="index.html#home" class="nav-item">Home</a>
+        <a href="index.html#episodes" class="nav-item">Episodes</a>
+        <a href="other-sites.html" class="nav-item active">Workshops</a>
+        <a href="index.html#tools" class="nav-item">Tools</a>
+        <a href="./credits/" class="nav-item credits-btn">📋 Video Credits</a>
+      </nav>
     </div>
   </header>
 
   <main class="container">
-    <div class="section-heading-box" style="margin-top: 24px;">
-      <h1 class="section-title" style="font-size: 2.5rem;">🌐 OTHER GREAT SITES</h1>
-      <p class="section-desc">Explore the creators, workshops, and 3D modellers across the Trainz Thomas community.</p>
+    <div style="margin-top: 16px; margin-bottom: 32px;">
+      <a href="index.html" style="color: var(--color-coastal-blue); text-decoration: none; font-size: 0.88rem; font-weight: 600;">← Back to Island Engines Home</a>
+      <h1 class="section-title" style="font-size: 2.4rem; margin-top: 12px;">🌐 Community Workshops & Creators</h1>
+      <p class="section-subtitle" style="font-size: 1.05rem;">
+        The Trainz Thomas community is filled with dedicated 3D artists, route builders, and creators. 
+        Here is a curated directory of workshops, websites, and archives to explore!
+      </p>
     </div>
 
     <!-- Search Box -->
-    <div class="sites-filter-wrap">
+    <div class="directory-search-bar">
       <input 
         type="text" 
         id="site-search-input" 
-        class="sites-search-box" 
-        placeholder="🔍 Search workshops (e.g. Boilersmiths, Crovan's Gate, Mid Sodor, Westernroutes)..." 
+        class="directory-input" 
+        placeholder="🔍 Search community workshops (e.g. Boilersmiths, Crovan's Gate, Mid Sodor, Westernroutes)..." 
       />
     </div>
 
     <!-- 20 Community Workshop Cards -->
-    <div class="sites-grid" id="community-sites-container">
-      <!-- Populated dynamically by main.js with emblem badges -->
+    <div class="directory-grid" id="community-sites-container">
+      <!-- Populated dynamically by main.js -->
     </div>
   </main>
 
-  <footer class="site-footer">
+  <footer class="studio-footer">
     <div class="container">
       <p><strong>Island Engines</strong> — A fan-made production filmed in Trainz Railroad Simulator.</p>
-      <p style="margin-top: 6px;">
+      <p>
         All linked sites belong to their respective creators. 
         <em>Thomas & Friends™</em> belongs to Mattel / Gullane / The Awdry Family.
       </p>
