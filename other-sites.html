@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -17,57 +16,44 @@
     🤖 <strong>AI Transparency:</strong> This directory was curated and coded with <span>AI assistance</span> for open development.
   </div>
 
-  <!-- Header -->
+  <!-- Classic Sodor Pill Header -->
   <header class="site-header">
-    <div class="container nav-container">
-      <a href="index.html" class="brand">
-        <span class="brand-icon">🚂</span>
-        <div class="brand-text">
-          <h1>Island Engines</h1>
-          <p>Community Directory</p>
-        </div>
-      </a>
-      <nav class="site-nav">
-        <a href="index.html#home" class="nav-link">Home</a>
-        <a href="index.html#news" class="nav-link">News</a>
-        <a href="index.html#episodes" class="nav-link">Episodes</a>
-        <a href="other-sites.html" class="nav-link active">Other Great Sites</a>
-        <a href="index.html#tools" class="nav-link">Downloads & Tools</a>
-        <a href="./credits/" class="nav-link credits-highlight">📋 Video Credits</a>
-      </nav>
+    <div class="nav-pill-wrapper">
+      <a href="index.html#home" class="nav-pill-brand">🚂 ISLAND ENGINES</a>
+      <a href="index.html#home" class="nav-pill-link">Home</a>
+      <a href="index.html#episodes" class="nav-pill-link">Episodes</a>
+      <a href="other-sites.html" class="nav-pill-link active">Other Sites</a>
+      <a href="index.html#tools" class="nav-pill-link">Tools</a>
+      <a href="./credits/" class="nav-pill-link credits-pill">📋 Video Credits</a>
     </div>
   </header>
 
   <main class="container">
-    <div class="section-header" style="margin-top: 16px;">
-      <a href="index.html" style="color: var(--accent-blue); text-decoration: none; font-size: 0.9rem; font-weight: 600;">← Back to Island Engines Home</a>
-      <h2 class="section-title" style="margin-top: 12px; font-size: 2.2rem;">🌐 Other Great Sites & Community Workshops</h2>
-      <p class="section-desc" style="font-size: 1.05rem;">
-        The Trainz Thomas community is filled with incredibly talented 3D artists, route builders, and creators. 
-        Here is a curated directory of workshops, websites, and archives to explore!
-      </p>
+    <div class="section-heading-box" style="margin-top: 24px;">
+      <h1 class="section-title" style="font-size: 2.5rem;">🌐 OTHER GREAT SITES</h1>
+      <p class="section-desc">Explore the creators, workshops, and 3D modellers across the Trainz Thomas community.</p>
     </div>
 
-    <!-- Search Filter Bar -->
-    <div class="filter-bar">
+    <!-- Search Box -->
+    <div class="sites-filter-wrap">
       <input 
         type="text" 
         id="site-search-input" 
-        class="search-input" 
-        placeholder="🔍 Search community sites (e.g. Boilersmiths, Crovan's Gate, Mid Sodor, Westernroutes)..." 
+        class="sites-search-box" 
+        placeholder="🔍 Search workshops (e.g. Boilersmiths, Crovan's Gate, Mid Sodor, Westernroutes)..." 
       />
     </div>
 
-    <!-- 20 Community Sites Grid -->
-    <div class="grid-3" id="community-sites-container">
-      <!-- Populated dynamically by main.js -->
+    <!-- 20 Community Workshop Cards -->
+    <div class="sites-grid" id="community-sites-container">
+      <!-- Populated dynamically by main.js with emblem badges -->
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
       <p><strong>Island Engines</strong> — A fan-made production filmed in Trainz Railroad Simulator.</p>
-      <p>
+      <p style="margin-top: 6px;">
         All linked sites belong to their respective creators. 
         <em>Thomas & Friends™</em> belongs to Mattel / Gullane / The Awdry Family.
       </p>
