@@ -46,12 +46,18 @@
   padding: 0;
 }
 
+/* Prevent content shift when scrollbar appears/disappears between pages */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--bg-canvas);
   background-image: 
-    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(2, 132, 199, 0.22), transparent 70%),
-    radial-gradient(circle at 100% 30%, rgba(245, 158, 11, 0.12), transparent 50%),
-    linear-gradient(180deg, #0a1122 0%, #05080f 100%);
+    url('assets/images/mainline-connor-express.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-body);
@@ -60,6 +66,25 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+}
+
+/* Dark cinematic overlay on top of the background photo */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(2, 132, 199, 0.18), transparent 70%),
+    radial-gradient(circle at 100% 30%, rgba(245, 158, 11, 0.10), transparent 50%),
+    linear-gradient(180deg, rgba(6, 9, 17, 0.82) 0%, rgba(5, 8, 15, 0.95) 100%);
+}
+
+/* Ensure all content sits above the overlay */
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ==========================================================================
@@ -1225,6 +1250,182 @@ html.hide-ai-notice .ai-notice-bar {
 }
 
 /* ==========================================================================
+   Workshop Map Hero — Playful Scattered Logo Layout (Other Sites Page)
+   ========================================================================== */
+.workshop-map-hero {
+  position: relative;
+  min-height: auto;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%, rgba(13, 21, 39, 0.55) 0%, rgba(6, 9, 17, 0.96) 100%),
+    url('assets/images/connor-trackside-view.jpg');
+  background-size: cover;
+  background-position: center;
+  border: 4px solid var(--color-brass);
+  border-radius: var(--radius-card);
+  margin-top: 16px;
+  margin-bottom: 48px;
+  padding: 48px 32px 76px 32px;
+  overflow: hidden;
+  box-shadow: 0 10px 0 #000, 0 24px 60px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  color: var(--color-gold-bright);
+  text-transform: uppercase;
+  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 6px 6px 0 #000;
+  text-align: center;
+  margin-bottom: 8px;
+  animation: titleDropIn 0.8s ease both 0.1s;
+}
+
+.map-hero-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #cbd5e1;
+  text-shadow: 2px 2px 0 #000, 0 4px 12px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 36px;
+  animation: titleDropIn 0.9s ease both 0.25s;
+}
+
+/* Logo Scatter Grid — fluid layout with playful sizing */
+.map-logo-scatter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 28px 22px;
+  max-width: 1200px;
+  padding: 10px 10px 20px 10px;
+  animation: slideInUp 0.8s ease both 0.35s;
+}
+
+.map-logo-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: popInBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.map-logo-item:nth-child(1) { animation-delay: 0.3s; }
+.map-logo-item:nth-child(2) { animation-delay: 0.4s; }
+.map-logo-item:nth-child(3) { animation-delay: 0.5s; }
+.map-logo-item:nth-child(4) { animation-delay: 0.55s; }
+.map-logo-item:nth-child(5) { animation-delay: 0.6s; }
+.map-logo-item:nth-child(6) { animation-delay: 0.65s; }
+.map-logo-item:nth-child(7) { animation-delay: 0.7s; }
+.map-logo-item:nth-child(8) { animation-delay: 0.75s; }
+.map-logo-item:nth-child(9) { animation-delay: 0.8s; }
+.map-logo-item:nth-child(10) { animation-delay: 0.85s; }
+
+/* Playful tilts — alternating rotations */
+.map-logo-item:nth-child(odd) { transform: rotate(-3deg); }
+.map-logo-item:nth-child(even) { transform: rotate(3deg); }
+.map-logo-item:nth-child(3n) { transform: rotate(-5deg); }
+.map-logo-item:nth-child(4n+1) { transform: rotate(4deg); }
+
+.map-logo-item:hover {
+  transform: rotate(0deg) scale(1.18) translateY(-8px) !important;
+  z-index: 10;
+}
+
+.map-logo-badge {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid var(--color-brass);
+  background: radial-gradient(circle at center, rgba(30, 41, 59, 0.95) 0%, rgba(13, 21, 39, 0.95) 100%);
+  box-shadow: 0 0 0 3px #000, 0 6px 0 #000, 0 8px 24px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 10px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Larger featured logos */
+.map-logo-item.featured .map-logo-badge {
+  width: 136px;
+  height: 136px;
+  border-width: 5px;
+  border-color: var(--color-gold-bright);
+}
+
+.map-logo-item:hover .map-logo-badge {
+  border-color: var(--color-gold-bright);
+  box-shadow: 0 0 0 3px #000, 0 0 25px rgba(255, 222, 89, 0.6), 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.map-logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
+}
+
+.map-logo-name {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 1px 1px 0 #000, 0 3px 8px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  margin-top: 10px;
+  max-width: 130px;
+  line-height: 1.25;
+  transition: color 0.2s ease;
+}
+
+.map-logo-item:hover .map-logo-name {
+  color: var(--color-gold-bright);
+}
+
+/* Divider between map hero and directory */
+.map-to-grid-divider {
+  text-align: center;
+  margin: 0 0 32px 0;
+  padding: 16px 0;
+}
+
+.map-to-grid-divider span {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0 20px;
+  position: relative;
+}
+
+.map-to-grid-divider span::before,
+.map-to-grid-divider span::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 3px;
+  background: var(--color-brass);
+  border-radius: 2px;
+}
+
+.map-to-grid-divider span::before { right: 100%; }
+.map-to-grid-divider span::after { left: 100%; }
+
+/* ==========================================================================
    Responsive Rules
    ========================================================================== */
 @media (max-width: 992px) {
@@ -1239,6 +1440,18 @@ html.hide-ai-notice .ai-notice-bar {
   }
   .community-hero-title {
     font-size: 2.8rem;
+  }
+  .workshop-map-hero {
+    min-height: auto;
+    padding: 36px 20px;
+  }
+  .map-logo-badge {
+    width: 90px;
+    height: 90px;
+  }
+  .map-logo-item.featured .map-logo-badge {
+    width: 110px;
+    height: 110px;
   }
 }
 
@@ -1257,4 +1470,29 @@ html.hide-ai-notice .ai-notice-bar {
   .lightbox-backdrop {
     padding: 10px;
   }
+  .map-logo-scatter {
+    gap: 14px;
+  }
+  .map-logo-badge {
+    width: 72px;
+    height: 72px;
+    border-width: 3px;
+    padding: 5px;
+  }
+  .map-logo-item.featured .map-logo-badge {
+    width: 90px;
+    height: 90px;
+  }
+  .map-logo-name {
+    font-size: 0.68rem;
+    max-width: 80px;
+  }
+  /* Remove tilts on mobile — keep clean */
+  .map-logo-item:nth-child(odd),
+  .map-logo-item:nth-child(even),
+  .map-logo-item:nth-child(3n),
+  .map-logo-item:nth-child(4n+1) {
+    transform: none;
+  }
 }
+

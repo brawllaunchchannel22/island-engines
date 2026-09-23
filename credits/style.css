@@ -39,24 +39,15 @@
   padding: 0;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--bg-page);
-  background-image: 
-    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(2, 132, 199, 0.22), transparent 70%),
-    radial-gradient(circle at 100% 30%, rgba(245, 158, 11, 0.12), transparent 50%),
-    linear-gradient(180deg, #0a1122 0%, #05080f 100%);
-  background-attachment: fixed;
   color: var(--text-main);
   line-height: 1.6;
-  min-height: 100vh;
-}
-
-.container {
-  max-width: 1760px;
-  width: 96%;
-  margin: 0 auto;
-  padding: 0 1.25rem;
 }
 
 /* Section Title with Sodor Display Font */
@@ -94,7 +85,7 @@ body {
    Notice Box
    ============================================================================== */
 .main-content {
-  padding: 1.5rem 1.25rem;
+  padding: 1.5rem 0;
 }
 
 .notice-box {
@@ -471,13 +462,6 @@ body {
   margin-top: 3.5rem;
   border-top: 1px solid var(--border);
   padding-top: 2rem;
-}
-
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.3rem;
 }
 
 .section-desc {

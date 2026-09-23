@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://toolshedtrainz.wixsite.com/mcbunncafe/sites-1",
       domain: "toolshedtrainz.wixsite.com",
       icon: "🛖",
-      logo: "assets/images/logos/mbunn_cafe.png",
+      logo: "assets/images/logos/e03a7c_5d098785eee44287b7b8a719d3c30a51_mv2.png",
       tag: "Routes & Hub",
       desc: "Extensive directory of Sodor routes, classic locomotives, and community links."
     },
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://sudrianrailways.wixsite.com/sudrian-railways-1",
       domain: "sudrianrailways.wixsite.com",
       icon: "🚂",
-      logo: "assets/images/logos/sudrian_railways.png",
+      logo: "assets/images/logos/1e0689_813f30ddd7e54472a2b0c1133a9d8d8d_mv2.png",
       tag: "RWS & TVS Models",
       desc: "Authentic Railway Series and TV series rolling stock and route creations."
     },
@@ -66,25 +66,16 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://bigboyproducions12.wixsite.com/the-branchline-crew",
       domain: "bigboyproducions12.wixsite.com",
       icon: "🌾",
-      logo: "assets/images/logos/branchline_crew.png",
+      logo: "assets/images/logos/71mc3jp.png",
       tag: "Productions & Models",
       desc: "Creator team focused on Sodor branch lines, wagons, and video series."
-    },
-    {
-      name: "CHXNCE's Hopper Wagon",
-      url: "https://chxnce100trainz.wixsite.com/chxnceshopperwagon",
-      domain: "chxnce100trainz.wixsite.com",
-      icon: "🚛",
-      logo: "assets/images/logos/chxnce_hopper.png",
-      tag: "Wagons & Goods Stock",
-      desc: "High-detail hopper wagons, troublesome trucks, and custom liveries."
     },
     {
       name: "Clay Truck Works",
       url: "https://trainkid916.wixsite.com/claytruckworks",
       domain: "trainkid916.wixsite.com",
       icon: "🧱",
-      logo: "assets/images/logos/clay_truck_works.png",
+      logo: "assets/images/logos/1e0689_6a116408ad5f47d49c97fc4d12cc0b5c_mv2.png",
       tag: "China Clay & Engines",
       desc: "Standard gauge engines, quarry trucks, and atmospheric scenic assets."
     },
@@ -247,6 +238,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial render
   renderSites();
+
+  // 2a. Render Map Hero Logos (Other Sites page playful scattered layout)
+  const mapLogoScatter = document.getElementById("map-logo-scatter");
+
+  if (mapLogoScatter) {
+    const featuredNames = [
+      "The Sudrian Boilersmiths (TSBS)",
+      "Westernroutes",
+      "Crovan's Gate Works",
+      "Harwick Enterprises",
+      "Vicarstown Transport",
+      "Ravenshire Works"
+    ];
+
+    const logoed = COMMUNITY_SITES.filter(s => s.logo);
+
+    mapLogoScatter.innerHTML = logoed.map(site => {
+      const isFeatured = featuredNames.includes(site.name);
+      return `
+        <a href="${site.url}" target="_blank" rel="noopener noreferrer"
+           class="map-logo-item${isFeatured ? ' featured' : ''}"
+           title="${escapeHtml(site.name)}">
+          <div class="map-logo-badge">
+            <img src="${site.logo}" alt="${escapeHtml(site.name)}" />
+          </div>
+          <span class="map-logo-name">${escapeHtml(site.name)}</span>
+        </a>
+      `;
+    }).join("");
+  }
 
   // 2b. Dismissible AI Transparency Notice
   const aiNoticeBar = document.getElementById("ai-notice-bar");
