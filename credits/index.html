@@ -5,34 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Video Credits & Asset List — Thomas Productions</title>
   <meta name="description" content="Credits and attribution list for Trainz 3D models, music, and assets that may be used in Thomas Productions videos." />
+  <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Top Header -->
-  <header class="header">
-    <div class="container header-container">
-      <div class="brand">
-        <a href="../" class="back-home-link" style="text-decoration:none; margin-right: 12px; font-size: 1.2rem;" title="Back to Island Engines">🏠 <strong>Island Engines</strong></a>
-        <span class="logo">🚂</span>
-        <div>
-          <h1 class="brand-title">Video Credits & Asset List</h1>
-          <p class="brand-subtitle">Assets, 3D models & music attributed across Island Engines / Thomas Productions</p>
+  <!-- AI Transparency Notice -->
+  <div class="ai-notice-bar">
+    🤖 <strong>AI Transparency:</strong> This video credits catalog and asset scanner were built with <span>AI assistance</span> for open development.
+  </div>
+
+  <!-- Studio Header & Navigation (Unified Across All Pages) -->
+  <header class="site-nav-header">
+    <div class="container nav-inner">
+      <a href="../index.html" class="studio-brand">
+        <div class="studio-logo-badge">🚂</div>
+        <div class="studio-title-box">
+          <h1>Island Engines</h1>
+          <p>Video Credits</p>
         </div>
+      </a>
+      <nav class="nav-links-row">
+        <a href="../index.html" class="nav-item">Home</a>
+        <a href="../episodes.html" class="nav-item">Episodes</a>
+        <a href="../other-sites.html" class="nav-item">Other Sites</a>
+        <a href="../tools.html" class="nav-item">Tools</a>
+        <a href="index.html" class="nav-item active credits-btn">📋 Video Credits</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+
+    <div style="margin-top: 24px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <h1 class="section-title" style="font-size: 2.2rem; margin-bottom: 4px;">📋 Production Credits & Asset Attribution</h1>
+        <p class="section-subtitle">Cataloging 6,100+ community 3D models, routes, and Milo the Otter orchestral scores.</p>
       </div>
-      <div class="header-stats">
-        <span class="stat-pill ai-pill">🤖 Made with AI</span>
+      <div class="header-stats" style="display: flex; gap: 10px; flex-wrap: wrap;">
         <span class="stat-pill"><strong id="stat-total">6,149</strong> Total Items</span>
         <span class="stat-pill"><strong id="stat-music">312</strong> Music</span>
         <span class="stat-pill"><strong id="stat-trainz">5,837</strong> Trainz</span>
       </div>
     </div>
-  </header>
-
-  <main class="container main-content">
 
     <!-- Honest Disclaimer Box -->
     <section class="notice-box">

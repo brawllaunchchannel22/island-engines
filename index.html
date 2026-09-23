@@ -19,7 +19,7 @@
   <!-- Studio Header & Navigation -->
   <header class="site-nav-header">
     <div class="container nav-inner">
-      <a href="#home" class="studio-brand">
+      <a href="index.html" class="studio-brand">
         <div class="studio-logo-badge">🚂</div>
         <div class="studio-title-box">
           <h1>Island Engines</h1>
@@ -27,177 +27,148 @@
         </div>
       </a>
       <nav class="nav-links-row">
-        <a href="#home" class="nav-item active">Home</a>
-        <a href="#episodes" class="nav-item">Episodes</a>
-        <a href="#workshops" class="nav-item">Community Workshops</a>
-        <a href="#tools" class="nav-item">Tools</a>
-        <a href="./credits/" class="nav-item credits-btn">📋 Video Credits</a>
+        <a href="index.html" class="nav-item active">Home</a>
+        <a href="episodes.html" class="nav-item">Episodes</a>
+        <a href="other-sites.html" class="nav-item">Other Sites</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+        <a href="credits/index.html" class="nav-item credits-btn">📋 Video Credits</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
 
-    <!-- Hero Section -->
-    <section class="cinematic-hero" id="home">
-      <div class="hero-tag">★ An Original Sodor Series Production</div>
-      <h2 class="hero-heading">Welcome to <span>Island Engines</span></h2>
-      <p class="hero-description">
-        Classic railway storytelling brought to life in Trainz Railroad Simulator 2022. 
-        Featuring atmospheric lighting, custom soundscapes, Milo the Otter orchestral scores, 
-        and authentic community craftsmanship.
+    <!-- Authentic Community Centerpiece Hero (Matching Sodor Creators Style) -->
+    <section class="community-hero">
+      <div class="community-roundel-wrap">
+        <div class="community-roundel">
+          <img src="assets/images/title-island-engines-james.png" alt="Island Engines Roundel" class="community-roundel-img" />
+        </div>
+      </div>
+      <div class="community-welcome-tag">WELCOME TO</div>
+      <h2 class="community-hero-title">ISLAND <span>ENGINES</span></h2>
+      <p class="community-hero-sub">
+        An Original Sodor Fan Series • Filmed in Trainz Railroad Simulator 2022
       </p>
       <div class="hero-actions">
-        <a href="#episodes" class="btn-hero-primary">▶ Episode 1: Slippery Rails</a>
-        <a href="./credits/" class="btn-hero-secondary">📋 Explore Video Credits (6,100+ Assets)</a>
-        <a href="#workshops" class="btn-hero-secondary">🌐 Community Workshops Directory</a>
+        <a href="episodes.html" class="btn-hero-primary">▶ Episode 1: Slippery Rails</a>
+        <a href="credits/index.html" class="btn-hero-secondary">📋 Explore Video Credits (6,100+ Assets)</a>
+        <a href="other-sites.html" class="btn-hero-secondary">🌐 Community Workshops</a>
       </div>
     </section>
 
-    <!-- Episode 1 Showcase (From Project Script) -->
-    <section class="content-section" id="episodes">
+    <!-- Newest Release Showcase (Compact Teaser) -->
+    <section class="content-section">
       <div class="section-head">
         <div>
-          <h2 class="section-title">🎬 Episode Guide</h2>
-          <p class="section-subtitle">Original stories of steam, pride, and heritage on the North Western Railway.</p>
+          <h2 class="section-title">🎬 Newest Release</h2>
+          <p class="section-subtitle">The premiere episode of Island Engines is currently rendering.</p>
         </div>
+        <a href="episodes.html" style="color: var(--color-coastal-blue); font-weight: 700; text-decoration: none; font-size: 0.92rem;">
+          View All Episodes & Stills →
+        </a>
       </div>
 
-      <div class="episode-card">
-        <div class="ep-header-line">
-          <span class="ep-num-tag">SEASON 1 • EPISODE 1</span>
-          <span class="ep-status-pill">🎬 In Production / Rendering</span>
+      <div class="episode-card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; align-items: center; padding: 28px;">
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle); aspect-ratio: 16/9; background: #000; box-shadow: 0 10px 24px rgba(0,0,0,0.5);">
+          <img src="assets/images/ep1-thomas-henry-warning.png" alt="Slippery Rails Episode Preview" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
         </div>
 
-        <h3 class="ep-main-title">Slippery Rails</h3>
-        <div class="ep-route-trail">
-          📍 <span>Brendam Docks</span> → <span>The Main Line</span> → <span>The Old Hill Loop</span>
-        </div>
-
-        <p class="ep-story-text">
-          On a cold, rain-lashed night at Brendam Docks, Henry is tasked with taking the heavy Flying Kipper fish train. 
-          When Thomas warns him that wet rails are as slick as glass, Henry arrogantly boasts that <em>"a big, strong engine doesn't need advice from a silly little tank engine"</em> and lies that his sandboxes are full.
-          <br><br>
-          Rushing through the gale to escape the smell of fish, Henry misses the points in the fog and is diverted onto the steep, overgrown hill line. 
-          On the muddy gradient, his heavy wheels spin violently into useless sparks against the slimy rails. Stranded alone in the pouring rain with the troublesome trucks mocking him in the dark, Henry's pride begins to crumble—until a friendly headlight cuts through the trees...
-        </p>
-
-        <div class="ep-cast-row">
-          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Featuring:</span>
-          <span class="cast-badge">🟢 Henry</span>
-          <span class="cast-badge">🔵 Thomas</span>
-          <span class="cast-badge">🪵 Troublesome Trucks</span>
-          <span class="cast-badge">👥 Henry's Driver & Fireman</span>
-          <span class="cast-badge">🎛️ The Signalman</span>
-          <span class="cast-badge">🎩 Sir Topham Hatt</span>
-        </div>
-
-        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-          <a href="https://www.youtube.com/@brawllaunchchannel?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
-            🔔 Subscribe on YouTube for Premiere Notification
-          </a>
-          <span style="font-size: 0.86rem; color: var(--text-muted); font-style: italic;">
-            Target Runtime: ~4:30 min • Score: Milo the Otter
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Community Workshops Directory -->
-    <section class="content-section" id="workshops">
-      <div class="section-head">
         <div>
-          <h2 class="section-title">🌐 Other Great Sites & Community Workshops</h2>
-          <p class="section-subtitle">A curated directory of community 3D modellers, route builders, and workshops.</p>
-        </div>
-        <span id="site-count-indicator" style="font-size: 0.85rem; color: var(--color-coastal-blue); font-weight: 700;">20 workshops cataloged</span>
-      </div>
-
-      <div class="directory-search-bar">
-        <input 
-          type="text" 
-          id="site-search-input" 
-          class="directory-input" 
-          placeholder="🔍 Search community workshops (e.g. Boilersmiths, Crovan's Gate, Mid Sodor, Westernroutes)..." 
-        />
-      </div>
-
-      <div class="directory-grid" id="community-sites-container">
-        <!-- Rendered dynamically by main.js -->
-      </div>
-    </section>
-
-    <!-- Downloads & Community Tools -->
-    <section class="content-section" id="tools">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">🛠️ Downloads & Community Tools</h2>
-          <p class="section-subtitle">Helpful, safe utilities for Trainz creators and players.</p>
-        </div>
-      </div>
-
-      <div class="tools-grid">
-        <!-- Universal Fixer Tool Box -->
-        <div class="tool-box">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-coastal-blue); text-transform: uppercase;">Trainz Utility</span>
-            <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 10px; border-radius: var(--radius-pill); font-weight: 700;">v1.0 • Safe</span>
+          <div class="ep-header-line" style="margin-bottom: 8px;">
+            <span class="ep-num-tag">SEASON 1 • EPISODE 1</span>
+            <span class="ep-status-pill">🎬 In Production / Rendering</span>
           </div>
 
-          <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Trainz Universal Asset Fixer</h3>
-          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
-            A safe, non-destructive Python repair utility designed to resolve Content Manager validation and script errors across TRS19, TRS22, and Trainz Plus.
+          <h3 class="ep-main-title" style="font-size: 1.85rem; margin-bottom: 6px;">Slippery Rails</h3>
+          <div class="ep-route-trail" style="margin-bottom: 12px;">
+            📍 <span>Brendam Docks</span> → <span>The Main Line</span> → <span>The Old Hill Loop</span>
+          </div>
+
+          <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 18px;">
+            On a cold, rain-lashed night at Brendam Docks, Henry is tasked with taking the heavy Flying Kipper fish train. 
+            Ignoring Thomas's warnings about slick rails and falsely claiming his sandboxes are full, Henry plunges into the storm—only to find himself stranded on the steep, overgrown hill line...
           </p>
 
-          <ul class="tool-feature-check">
-            <li>🛡️ <strong>100% Non-Destructive:</strong> Creates <code>.bak</code> backups before editing any file.</li>
-            <li>🧪 <strong>Dry-Run Mode:</strong> Preview repairs with <code>--dry-run</code> without touching disk.</li>
-            <li>🚂 <strong>VE146 Bogeys:</strong> Upgrades legacy root bogey tags into modern containers.</li>
-            <li>🎨 <strong>Textures & Sounds:</strong> Generates missing <code>texture.txt</code> and clean sound stubs (VE10/VE65).</li>
-            <li>💻 <strong>Cross-Platform:</strong> Works on Windows, Linux (Steam/Proton), and macOS.</li>
-          </ul>
-
-          <div style="margin-top: auto; display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="./tools/trainz_universal_fixer.py" download="trainz_universal_fixer.py" class="btn-hero-primary" style="font-size: 0.88rem; padding: 10px 20px;">
-              📥 Download Fixer (.py)
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <a href="episodes.html" class="btn-hero-primary" style="font-size: 0.88rem; padding: 10px 20px;">
+              📖 Read Full Script & View 1080p Stills
             </a>
-            <a href="./tools/README_FIXER.md" target="_blank" class="btn-hero-secondary" style="font-size: 0.88rem; padding: 10px 18px;">
-              📖 Documentation
+            <a href="https://www.youtube.com/@brawllaunchchannel?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary" style="font-size: 0.88rem; padding: 10px 18px;">
+              🔔 Subscribe for Premiere
             </a>
           </div>
         </div>
-
-        <!-- Custom Content Placeholder -->
-        <div class="tool-box">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-brass); text-transform: uppercase;">Community Releases</span>
-            <span style="font-size: 0.75rem; background: var(--color-brass-glow); color: var(--color-brass); padding: 2px 10px; border-radius: var(--radius-pill); font-weight: 700;">In Progress</span>
-          </div>
-
-          <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Island Engines Reskins & Assets</h3>
-          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
-            Locomotive reskins, custom rolling stock variants, and scenery items used in *Island Engines* episodes will be made available for download here with permission from original authors.
-          </p>
-
-          <div style="margin-top: auto; padding-top: 32px;">
-            <span style="font-size: 0.86rem; color: var(--text-muted); font-style: italic;">
-              Packages will be published alongside new episode releases.
-            </span>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- Comprehensive Credits Callout -->
-    <section class="credits-banner">
-      <h3 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 12px;">Full Production Credits & Asset Attribution</h3>
-      <p style="color: var(--text-secondary); max-width: 680px; margin: 0 auto 24px auto; font-size: 1rem; line-height: 1.6;">
-        We believe in honest attribution. Explore our comprehensive database of <strong>over 6,100 curated community models</strong>, 
-        routes, and 313 Milo the Otter orchestral tracks with KUIDs and creator profiles.
+    <!-- Quick Navigation Hub -->
+    <section class="content-section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">⭐ Production Hub & Resources</h2>
+          <p class="section-subtitle">Select a section from the directory below or use the top menu.</p>
+        </div>
+      </div>
+
+      <div class="hub-grid">
+        <a href="episodes.html" class="hub-card">
+          <div class="hub-icon-row">
+            <span class="hub-icon">🎬</span>
+            <span class="hub-arrow">→</span>
+          </div>
+          <div class="hub-card-title">Episode Guide</div>
+          <div class="hub-card-desc">
+            Explore Season 1 episodes, detailed plot synopses, cast lists, and an interactive 1080p production stills gallery.
+          </div>
+        </a>
+
+        <a href="other-sites.html" class="hub-card">
+          <div class="hub-icon-row">
+            <span class="hub-icon">🌐</span>
+            <span class="hub-arrow">→</span>
+          </div>
+          <div class="hub-card-title">Other Great Sites</div>
+          <div class="hub-card-desc">
+            A curated directory of 20 community 3D modellers, route creators, and classic Trainz workshops with live search.
+          </div>
+        </a>
+
+        <a href="tools.html" class="hub-card">
+          <div class="hub-icon-row">
+            <span class="hub-icon">🛠️</span>
+            <span class="hub-arrow">→</span>
+          </div>
+          <div class="hub-card-title">Trainz Fixer & Tools</div>
+          <div class="hub-card-desc">
+            Download our safe, non-destructive Trainz Universal Asset Fixer v1.0 and future episode reskin packages.
+          </div>
+        </a>
+
+        <a href="credits/index.html" class="hub-card">
+          <div class="hub-icon-row">
+            <span class="hub-icon">📋</span>
+            <span class="hub-arrow">→</span>
+          </div>
+          <div class="hub-card-title">Video Credits Catalog</div>
+          <div class="hub-card-desc">
+            Comprehensive database of 6,100+ community 3D assets, routes, and Milo the Otter orchestral music tracks with KUIDs.
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Socials & Community Links (Matching Chxnce / Sudrian Railways style) -->
+    <section class="socials-section">
+      <h3 class="socials-title">📢 Join Our Community</h3>
+      <p style="color: var(--text-secondary); max-width: 540px; margin: 0 auto; font-size: 0.95rem;">
+        Follow the official channel on YouTube for behind-the-scenes Trainz rendering updates, teasers, and the premiere of Episode 1!
       </p>
-      <a href="./credits/" class="btn-hero-primary">
-        📋 Open Video Credits Catalog
-      </a>
+      <div class="socials-row">
+        <a href="https://www.youtube.com/@brawllaunchchannel?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="social-btn social-youtube">
+          <span style="font-size: 1.2rem;">▶</span> Subscribe on YouTube
+        </a>
+      </div>
     </section>
 
   </main>
@@ -216,6 +187,5 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
 </body>
 </html>

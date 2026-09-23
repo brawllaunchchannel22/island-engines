@@ -224,6 +224,55 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial render
   renderSites();
 
+  // 3. Image Lightbox Modal for Production Stills
+  const lightbox = document.getElementById("image-lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  const lightboxCloseBtn = document.getElementById("lightbox-close-btn");
+
+  if (lightbox && lightboxImg && lightboxCaption) {
+    document.querySelectorAll(".lightbox-trigger").forEach(trigger => {
+      trigger.addEventListener("click", () => {
+        const fullSrc = trigger.getAttribute("data-full");
+        const caption = trigger.getAttribute("data-caption") || "";
+        if (fullSrc) {
+          lightboxImg.src = fullSrc;
+          lightboxCaption.textContent = caption;
+          lightbox.classList.add("open");
+          lightbox.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden"; // Prevent page background scroll
+        }
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      setTimeout(() => {
+        lightboxImg.src = "";
+        lightboxCaption.textContent = "";
+      }, 200);
+    }
+
+    if (lightboxCloseBtn) {
+      lightboxCloseBtn.addEventListener("click", closeLightbox);
+    }
+
+    lightbox.addEventListener("click", (e) => {
+      // Close if clicking outside the image/dialog box
+      if (e.target === lightbox || e.target.classList.contains("lightbox-media-box")) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("open")) {
+        closeLightbox();
+      }
+    });
+  }
+
   function escapeHtml(s) {
     if (!s) return "";
     return String(s)
@@ -234,3 +283,4 @@ document.addEventListener("DOMContentLoaded", () => {
       .replace(/'/g, "&#039;");
   }
 });
+
