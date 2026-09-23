@@ -4,7 +4,11 @@ A safe, non-destructive, open-source Python tool designed to fix common validati
 
 ---
 
-## 🛡️ Safety & Non-Destructive Design
+## 🛡️ Safety & Non-Destructive Design (v1.1 Update)
+* **Path Traversal Protection:** Validates that texture and audio references stay strictly within the asset folder hierarchy.
+* **Multi-Encoding Auto-Detection:** Seamlessly reads UTF-8 (with or without BOM), Windows-1252 (ANSI), and Latin-1 without corrupting foreign or special characters.
+* **Deterministic Texture Resolution:** Prioritizes textures in strict order (`.tga` > `.bmp` > `.png` > `.jpg`) with reproducible sorting.
+* **Smart Brace Syntax Parser:** Ignores curly braces inside comments (`//`, `;`) and quoted strings when checking brace balance.
 * **Automatic Backups:** Creates `.bak` files before touching any configuration.
 * **Dry-Run Mode:** Test what will be fixed before modifying any file with `--dry-run`.
 * **Zero Asset Deletions:** Does not delete any meshes, sound files, or user assets.

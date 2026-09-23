@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://thesudrianboilersmiths.org/",
       domain: "thesudrianboilersmiths.org",
       icon: "🔥",
+      logo: "assets/images/logos/sodorworkshops.png",
       tag: "Premier Workshop",
       desc: "Iconic classic Sodor locomotives, rolling stock, and scenic models for Trainz."
     },
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://toolshedtrainz.wixsite.com/mcbunncafe/sites-1",
       domain: "toolshedtrainz.wixsite.com",
       icon: "🛖",
+      logo: "assets/images/logos/mbunn_cafe.png",
       tag: "Routes & Hub",
       desc: "Extensive directory of Sodor routes, classic locomotives, and community links."
     },
@@ -28,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://midsodormodelworks.wixsite.com/midsodormodelworks3d",
       domain: "midsodormodelworks.wixsite.com",
       icon: "🏔️",
+      logo: "assets/images/logos/site_logo_v2.png",
       tag: "Narrow & Standard Gauge",
       desc: "Detailed 3D locomotives, vintage narrow gauge engines, and rolling stock."
     },
@@ -36,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://theoldguardsvan3d.jimdofree.com/",
       domain: "theoldguardsvan3d.jimdofree.com",
       icon: "🏮",
+      logo: "assets/images/logos/tramway_3d.png",
       tag: "Rolling Stock & Figures",
       desc: "Classic brake vans, workmen figures, and authentic heritage rolling stock."
     },
@@ -44,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://crovansgateworks.wixsite.com/crovansgateworks",
       domain: "crovansgateworks.wixsite.com",
       icon: "⚙️",
+      logo: "assets/images/logos/cgw_banner.png",
       tag: "Locomotives & Reskins",
       desc: "Dedicated Sodor workshop releasing steam engines and unique Trainz reskins."
     },
@@ -52,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://sudrianrailways.wixsite.com/sudrian-railways-1",
       domain: "sudrianrailways.wixsite.com",
       icon: "🚂",
+      logo: "assets/images/logos/sudrian_railways.png",
       tag: "RWS & TVS Models",
       desc: "Authentic Railway Series and TV series rolling stock and route creations."
     },
@@ -60,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://bigboyproducions12.wixsite.com/the-branchline-crew",
       domain: "bigboyproducions12.wixsite.com",
       icon: "🌾",
+      logo: "assets/images/logos/branchline_crew.png",
       tag: "Productions & Models",
       desc: "Creator team focused on Sodor branch lines, wagons, and video series."
     },
@@ -68,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://chxnce100trainz.wixsite.com/chxnceshopperwagon",
       domain: "chxnce100trainz.wixsite.com",
       icon: "🚛",
+      logo: "assets/images/logos/chxnce_hopper.png",
       tag: "Wagons & Goods Stock",
       desc: "High-detail hopper wagons, troublesome trucks, and custom liveries."
     },
@@ -76,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://trainkid916.wixsite.com/claytruckworks",
       domain: "trainkid916.wixsite.com",
       icon: "🧱",
+      logo: "assets/images/logos/clay_truck_works.png",
       tag: "China Clay & Engines",
       desc: "Standard gauge engines, quarry trucks, and atmospheric scenic assets."
     },
@@ -84,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://bigstationtbs.wixsite.com/the-big-station",
       domain: "bigstationtbs.wixsite.com",
       icon: "🏛️",
+      logo: "assets/images/logos/theworkbench2.png",
       tag: "Terminus & Scenery",
       desc: "Classic terminus stations, landmarks, locomotives, and scenic packages."
     },
@@ -92,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://westernroute.wixsite.com/westernroutes",
       domain: "westernroute.wixsite.com",
       icon: "🗺️",
+      logo: "assets/images/logos/westernroutes.png",
       tag: "Routes & Layouts",
       desc: "Expansive, beautifully crafted Trainz routes inspired by the Island of Sodor."
     },
@@ -108,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://new-weymouth-workshops.jimdofree.com/",
       domain: "new-weymouth-workshops.jimdofree.com",
       icon: "🏭",
+      logo: "assets/images/logos/sodor_factories.png",
       tag: "Community Workshop",
       desc: "Locomotive releases, heritage rolling stock, and railway accessories."
     },
@@ -116,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://mainlandstudios.wixsite.com/mysite",
       domain: "mainlandstudios.wixsite.com",
       icon: "🎬",
+      logo: "assets/images/logos/the_marvelous_mainland_model_works.png",
       tag: "Series & 3D Assets",
       desc: "Outstanding Trainz series production team, models, and community resources."
     },
@@ -124,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://thetardisexpress.wixsite.com/ravenshireworks",
       domain: "thetardisexpress.wixsite.com",
       icon: "🦅",
+      logo: "assets/images/logos/ravenshire_works.png",
       tag: "Custom Models",
       desc: "Creative custom rolling stock, vintage steam locomotives, and diesels."
     },
@@ -132,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://sudrianindustries.wixsite.com/sudrianindustries",
       domain: "sudrianindustries.wixsite.com",
       icon: "🏗️",
+      logo: "assets/images/logos/tsi.png",
       tag: "Industrial Stock",
       desc: "Industrial shunters, heavy rolling stock, cranes, and quarry scenery."
     },
@@ -140,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://harwickenterprises3.wixsite.com/harwick-enterprises",
       domain: "harwickenterprises3.wixsite.com",
       icon: "🌊",
+      logo: "assets/images/logos/harwick_enterprises.png",
       tag: "Branchlines & Models",
       desc: "High quality rolling stock, scenery props, and authentic community models."
     },
@@ -148,6 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://vicarstowntranspor.wixsite.com/vicarstown-transport",
       domain: "vicarstowntranspor.wixsite.com",
       icon: "🚌",
+      logo: "assets/images/logos/vicarstowntransportco.png",
       tag: "Vehicles & Roads",
       desc: "Vintage road vehicles, classic buses, traction engines, and scenic transport."
     },
@@ -164,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://sodorboilersmiths.wixsite.com/sudrianboilersmiths",
       domain: "sodorboilersmiths.wixsite.com",
       icon: "📦",
+      logo: "assets/images/logos/sodorworkshopssister.png",
       tag: "Legacy Archive",
       desc: "Archive of classic locomotive and rolling stock releases from the Boilersmiths."
     }
@@ -197,10 +215,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    sitesContainer.innerHTML = filtered.map(site => `
+    sitesContainer.innerHTML = filtered.map(site => {
+      const avatarHtml = site.logo
+        ? `<div class="dir-icon-avatar has-logo"><img src="${site.logo}" alt="${escapeHtml(site.name)}" class="dir-site-logo-img" /></div>`
+        : `<div class="dir-icon-avatar">${site.icon}</div>`;
+
+      return `
       <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="directory-card">
         <div class="dir-top-row">
-          <div class="dir-icon-avatar">${site.icon}</div>
+          ${avatarHtml}
           <div>
             <div class="dir-title">${escapeHtml(site.name)}</div>
             <div class="dir-tag">${escapeHtml(site.tag)}</div>
@@ -212,7 +235,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <span>↗</span>
         </div>
       </a>
-    `).join("");
+      `;
+    }).join("");
   }
 
   if (siteSearchInput) {
@@ -223,6 +247,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial render
   renderSites();
+
+  // 2b. Dismissible AI Transparency Notice
+  const aiNoticeBar = document.getElementById("ai-notice-bar");
+  const aiNoticeDismiss = document.getElementById("ai-notice-dismiss");
+
+  if (localStorage.getItem("island_engines_ai_notice_dismissed") === "1" && aiNoticeBar) {
+    aiNoticeBar.classList.add("is-dismissed");
+  }
+
+  if (aiNoticeDismiss && aiNoticeBar) {
+    aiNoticeDismiss.addEventListener("click", () => {
+      aiNoticeBar.classList.add("is-dismissed");
+      try {
+        localStorage.setItem("island_engines_ai_notice_dismissed", "1");
+      } catch (err) {
+        // LocalStorage fallback for private browsing
+      }
+    });
+  }
 
   // 3. Image Lightbox Modal for Production Stills
   const lightbox = document.getElementById("image-lightbox");

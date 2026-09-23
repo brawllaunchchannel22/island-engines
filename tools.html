@@ -8,12 +8,20 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    if (localStorage.getItem('island_engines_ai_notice_dismissed') === '1') {
+      document.documentElement.classList.add('hide-ai-notice');
+    }
+  </script>
 </head>
 <body>
 
-  <!-- AI Transparency Notice -->
-  <div class="ai-notice-bar">
-    🤖 <strong>AI Transparency:</strong> This tool utility and download portal were created with <span>AI assistance</span> for open development.
+  <!-- AI Transparency Notice (Dismissible) -->
+  <div class="ai-notice-bar" id="ai-notice-bar">
+    <div class="ai-notice-text">
+      🤖 <strong>AI Transparency:</strong> This tool utility and download portal were created with <span>AI assistance</span> for open development.
+    </div>
+    <button type="button" class="ai-notice-dismiss" id="ai-notice-dismiss" aria-label="Dismiss AI notice" title="Dismiss notice">✕</button>
   </div>
 
   <!-- Studio Header & Navigation -->
@@ -51,7 +59,7 @@
       <div class="tool-box">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-coastal-blue); text-transform: uppercase;">Trainz Utility</span>
-          <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 10px; border-radius: var(--radius-pill); font-weight: 700;">v1.0 • Safe</span>
+          <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 10px; border-radius: var(--radius-pill); font-weight: 700;">v1.1 • Safe</span>
         </div>
 
         <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; color: #fff;">Trainz Universal Asset Fixer</h2>
@@ -62,6 +70,7 @@
         <ul class="tool-feature-check">
           <li>🛡️ <strong>100% Non-Destructive:</strong> Creates <code>.bak</code> backups before modifying any configuration.</li>
           <li>🧪 <strong>Dry-Run Mode:</strong> Preview all repairs with <code>--dry-run</code> without touching disk.</li>
+          <li>🔒 <strong>v1.1 Security:</strong> Path traversal prevention, multi-encoding auto-detection, and comment-aware syntax parser.</li>
           <li>🚂 <strong>VE146 Bogey Repair:</strong> Upgrades legacy root bogey tags into modern bogey containers.</li>
           <li>🎨 <strong>Textures & Sounds:</strong> Generates missing <code>texture.txt</code> and clean sound stubs (VE10/VE65).</li>
           <li>💻 <strong>Cross-Platform:</strong> Works cleanly on Windows, Linux (Steam/Proton), and macOS.</li>
@@ -105,7 +114,7 @@
       <p>
         <em>Thomas & Friends™</em> is copyright Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family. 
         All models and routes belong to their respective community creators. 
-        Orchestral reorchestrations by <a href="https://soundcloud.com" target="_blank" rel="noopener">Milo the Otter</a>.
+        Orchestral reorchestrations by <a href="https://www.youtube.com/@OtterBoiMilo" target="_blank" rel="noopener noreferrer">Milo the Otter</a>.
       </p>
       <p style="margin-top: 12px; font-size: 0.78rem; color: var(--text-muted);">
         🤖 Built with AI assistance for code development & open transparency • Hosted on GitHub Pages
@@ -113,5 +122,6 @@
     </div>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>

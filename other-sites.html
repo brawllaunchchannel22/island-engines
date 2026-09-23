@@ -8,12 +8,20 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    if (localStorage.getItem('island_engines_ai_notice_dismissed') === '1') {
+      document.documentElement.classList.add('hide-ai-notice');
+    }
+  </script>
 </head>
 <body>
 
-  <!-- AI Transparency Notice -->
-  <div class="ai-notice-bar">
-    🤖 <strong>AI Transparency:</strong> This directory was curated and coded with <span>AI assistance</span> for open development.
+  <!-- AI Transparency Notice (Dismissible) -->
+  <div class="ai-notice-bar" id="ai-notice-bar">
+    <div class="ai-notice-text">
+      🤖 <strong>AI Transparency:</strong> This directory was curated and coded with <span>AI assistance</span> for open development.
+    </div>
+    <button type="button" class="ai-notice-dismiss" id="ai-notice-dismiss" aria-label="Dismiss AI notice" title="Dismiss notice">✕</button>
   </div>
 
   <!-- Header -->

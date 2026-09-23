@@ -235,9 +235,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let authorHtml = "";
     if (isMusic) {
       const arranger = item.arranger ? `<strong class="milo-badge">${escapeHtml(item.arranger)}</strong>` : "";
-      const composer = item.composer ? escapeHtml(item.composer) : "";
       if (arranger && arranger.includes("Milo the Otter")) {
-        authorHtml = `Reorchestrated by <button class="author-btn" data-author="${escapeHtml(item.arranger)}">${arranger}</button> (Original: Mike O'Donnell & Junior Campbell)`;
+        authorHtml = `Reorchestrated by <button class="author-btn" data-author="${escapeHtml(item.arranger)}">${arranger}</button> (<a href="https://www.youtube.com/@OtterBoiMilo" target="_blank" rel="noopener noreferrer" style="color: var(--blue-primary); text-decoration: underline; font-weight: 600;">@OtterBoiMilo ↗</a>)`;
       } else if (arranger) {
         authorHtml = `Arranged by <button class="author-btn" data-author="${escapeHtml(item.arranger)}">${arranger}</button>`;
       } else {
@@ -364,6 +363,23 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.removeChild(el);
       showToast(`Copied ${txt}!`);
     }
+  }
+
+  // Dismissible AI Transparency Notice
+  const aiNoticeBar = document.getElementById("ai-notice-bar");
+  const aiNoticeDismiss = document.getElementById("ai-notice-dismiss");
+
+  if (localStorage.getItem("island_engines_ai_notice_dismissed") === "1" && aiNoticeBar) {
+    aiNoticeBar.classList.add("is-dismissed");
+  }
+
+  if (aiNoticeDismiss && aiNoticeBar) {
+    aiNoticeDismiss.addEventListener("click", () => {
+      aiNoticeBar.classList.add("is-dismissed");
+      try {
+        localStorage.setItem("island_engines_ai_notice_dismissed", "1");
+      } catch (err) {}
+    });
   }
 
   let toastTimer = null;

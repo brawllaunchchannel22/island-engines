@@ -8,12 +8,20 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    if (localStorage.getItem('island_engines_ai_notice_dismissed') === '1') {
+      document.documentElement.classList.add('hide-ai-notice');
+    }
+  </script>
 </head>
 <body>
 
-  <!-- AI Transparency Notice -->
-  <div class="ai-notice-bar">
-    🤖 <strong>AI Transparency:</strong> This episode portal and stills gallery were built with <span>AI assistance</span> for open development.
+  <!-- AI Transparency Notice (Dismissible) -->
+  <div class="ai-notice-bar" id="ai-notice-bar">
+    <div class="ai-notice-text">
+      🤖 <strong>AI Transparency:</strong> This episode portal and stills gallery were built with <span>AI assistance</span> for open development.
+    </div>
+    <button type="button" class="ai-notice-dismiss" id="ai-notice-dismiss" aria-label="Dismiss AI notice" title="Dismiss notice">✕</button>
   </div>
 
   <!-- Studio Header & Navigation -->
@@ -85,12 +93,15 @@
         <span class="cast-badge">🎩 Sir Topham Hatt</span>
       </div>
 
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
-        <a href="https://www.youtube.com/@brawllaunchchannel?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
-          🔔 Subscribe on YouTube for Premiere Notification
+      <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 12px;">
+        <a href="https://www.youtube.com/playlist?list=PLADdyYBi4BDo" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
+          ▶ Watch Episode 1 on YouTube (Playlist)
+        </a>
+        <a href="https://www.youtube.com/@BLC2022?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
+          🔔 Subscribe to @BLC2022
         </a>
         <span style="font-size: 0.86rem; color: var(--text-muted); font-style: italic;">
-          Target Runtime: ~4:30 min • Score: Milo the Otter
+          Target Runtime: ~11:00 min • Score: <a href="https://www.youtube.com/@OtterBoiMilo" target="_blank" rel="noopener noreferrer" style="color: var(--color-coastal-blue); text-decoration: underline;">Milo the Otter</a>
         </span>
       </div>
 
@@ -214,7 +225,7 @@
       <p>
         <em>Thomas & Friends™</em> is copyright Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family. 
         All models and routes belong to their respective community creators. 
-        Orchestral reorchestrations by <a href="https://soundcloud.com" target="_blank" rel="noopener">Milo the Otter</a>.
+        Orchestral reorchestrations by <a href="https://www.youtube.com/@OtterBoiMilo" target="_blank" rel="noopener noreferrer">Milo the Otter</a>.
       </p>
       <p style="margin-top: 12px; font-size: 0.78rem; color: var(--text-muted);">
         🤖 Built with AI assistance for code development & open transparency • Hosted on GitHub Pages

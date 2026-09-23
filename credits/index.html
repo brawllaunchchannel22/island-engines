@@ -9,12 +9,20 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    if (localStorage.getItem('island_engines_ai_notice_dismissed') === '1') {
+      document.documentElement.classList.add('hide-ai-notice');
+    }
+  </script>
 </head>
 <body>
 
-  <!-- AI Transparency Notice -->
-  <div class="ai-notice-bar">
-    🤖 <strong>AI Transparency:</strong> This video credits catalog and asset scanner were built with <span>AI assistance</span> for open development.
+  <!-- AI Transparency Notice (Dismissible) -->
+  <div class="ai-notice-bar" id="ai-notice-bar">
+    <div class="ai-notice-text">
+      🤖 <strong>AI Transparency:</strong> This video credits catalog and asset scanner were built with <span>AI assistance</span> for open development.
+    </div>
+    <button type="button" class="ai-notice-dismiss" id="ai-notice-dismiss" aria-label="Dismiss AI notice" title="Dismiss notice">✕</button>
   </div>
 
   <!-- Studio Header & Navigation (Unified Across All Pages) -->
@@ -64,7 +72,7 @@
       <ul class="notice-list">
         <li><strong>Not everything here is used in every video:</strong> This is a general catalog of assets I have installed or available for production.</li>
         <li><strong>Not everything may be free to use:</strong> Some items are private, third-party, or legacy community assets. This page exists purely to provide honest credit and attribution to the original creators.</li>
-        <li><strong>Copyright:</strong> <em>Thomas & Friends™</em> belongs to Mattel / Gullane / The Awdry Family. Classic score composed by Mike O'Donnell & Junior Campbell. Free orchestral reorchestrations by <strong>Milo the Otter</strong>. Trainz models created by the respective community modellers below.</li>
+        <li><strong>Copyright:</strong> <em>Thomas & Friends™</em> belongs to Mattel / Gullane / The Awdry Family. Classic score composed by Mike O'Donnell & Junior Campbell. Free orchestral reorchestrations by <a href="https://www.youtube.com/@OtterBoiMilo" target="_blank" rel="noopener noreferrer" style="color: var(--color-gold-bright); text-decoration: underline; font-weight: 700;">Milo the Otter</a>. Trainz models created by the respective community modellers below.</li>
         <li><strong>AI Note:</strong> This website, catalog structure, and asset scanner were built with AI assistance.</li>
       </ul>
     </section>
@@ -132,10 +140,18 @@
 
   </main>
 
-  <footer class="footer">
-    <div class="container footer-container">
-      <p>Thomas Productions — Credits Directory • Hosted on GitHub Pages</p>
-      <p class="footer-small">Built with AI assistance • Not affiliated with or endorsed by Mattel, Inc. or Gullane (Thomas) Limited.</p>
+  <footer class="studio-footer">
+    <div class="container">
+      <p><strong>Island Engines</strong> — Production Credits & Community Asset Catalog.</p>
+      <p>
+        <em>Thomas & Friends™</em> is copyright Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family. 
+        All models and routes belong to their respective community creators. 
+        Orchestral reorchestrations by <a href="https://www.youtube.com/@OtterBoiMilo" target="_blank" rel="noopener noreferrer">Milo the Otter</a>.
+        Official YouTube Channel: <a href="https://www.youtube.com/@BLC2022" target="_blank" rel="noopener noreferrer">@BLC2022</a>.
+      </p>
+      <p style="margin-top: 12px; font-size: 0.78rem; color: var(--text-muted);">
+        🤖 Built with AI assistance for code development & open transparency • Hosted on GitHub Pages
+      </p>
     </div>
   </footer>
 

@@ -63,22 +63,61 @@ body {
 }
 
 /* ==========================================================================
-   AI Transparency Bar
+   AI Transparency Bar (Dismissible with LocalStorage Persistence)
    ========================================================================== */
+html.hide-ai-notice .ai-notice-bar {
+  display: none !important;
+}
+
 .ai-notice-bar {
   background: #080d1a;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 16px;
+  padding: 8px 48px 8px 16px;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--text-muted);
   text-align: center;
   letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: opacity 0.25s ease, max-height 0.25s ease, padding 0.25s ease;
+}
+
+.ai-notice-bar.is-dismissed {
+  display: none !important;
 }
 
 .ai-notice-bar span {
   color: var(--color-coastal-blue);
   font-weight: 800;
+}
+
+.ai-notice-dismiss {
+  position: absolute;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.ai-notice-dismiss:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #ef4444;
+  color: #fff;
+  transform: scale(1.08);
 }
 
 /* ==========================================================================
@@ -278,22 +317,25 @@ body {
 }
 
 /* ==========================================================================
-   Authentic Community Centerpiece Hero
+   Authentic Community Centerpiece Hero (Full First-View Desktop Framing)
    ========================================================================== */
 .community-hero {
   position: relative;
+  min-height: calc(100vh - 120px);
+  min-height: calc(100dvh - 120px);
   background-image: 
-    linear-gradient(180deg, rgba(8, 14, 28, 0.5) 0%, rgba(6, 10, 20, 0.92) 100%),
+    radial-gradient(ellipse at center, rgba(13, 21, 39, 0.45) 0%, rgba(6, 9, 17, 0.92) 100%),
+    linear-gradient(180deg, rgba(8, 14, 28, 0.4) 0%, rgba(6, 10, 20, 0.96) 100%),
     url('assets/images/hero-spencer-mainline.jpg');
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 32%;
   border: 4px solid var(--color-brass);
   border-radius: var(--radius-card);
-  padding: 64px 32px 50px 32px;
-  margin-top: 24px;
-  margin-bottom: 48px;
+  padding: 48px 24px 36px 24px;
+  margin-top: 16px;
+  margin-bottom: 56px;
   text-align: center;
-  box-shadow: 0 8px 0 #000, 0 20px 50px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 0 #000, 0 24px 60px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -301,36 +343,36 @@ body {
   animation: popInBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-.community-roundel-wrap {
+.community-crest-badge {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  animation: titleDropIn 0.6s ease both;
 }
 
-.community-roundel {
-  width: 160px;
-  height: 160px;
+.crest-inner-ring {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1e293b 0%, #080c14 100%);
-  border: 6px solid var(--color-gold-bright);
+  background: linear-gradient(145deg, #1e293b 0%, #080c14 100%);
+  border: 5px solid var(--color-gold-bright);
+  box-shadow: 0 0 0 4px #000, 0 0 30px rgba(255, 222, 89, 0.5), 0 8px 20px rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   position: relative;
   animation: roundelGlowPulse 4s infinite ease-in-out;
 }
 
-.community-roundel-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.15);
+.crest-loco-symbol {
+  font-size: 2.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
 }
 
 .community-welcome-tag {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-gold-bright);
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000;
@@ -340,12 +382,12 @@ body {
 
 .community-hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
   letter-spacing: 0.02em;
   color: var(--color-gold-bright);
   text-transform: uppercase;
   text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 6px 6px 0 #000;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   line-height: 1.05;
   animation: titleDropIn 0.8s ease both 0.25s;
 }
@@ -361,8 +403,8 @@ body {
   font-weight: 800;
   color: #fff;
   text-shadow: 2px 2px 0 #000, 0 4px 12px rgba(0, 0, 0, 0.8);
-  max-width: 680px;
-  margin-bottom: 28px;
+  max-width: 720px;
+  margin-bottom: 32px;
   animation: titleDropIn 0.9s ease both 0.35s;
 }
 
@@ -372,6 +414,37 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   animation: slideInUp 0.8s ease both 0.45s;
+}
+
+.hero-scroll-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin-top: 40px;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+
+.hero-scroll-btn:hover {
+  color: var(--color-gold-bright);
+  opacity: 1;
+  transform: translateY(3px);
+}
+
+.hero-scroll-btn svg {
+  animation: scrollBounce 2s infinite ease-in-out;
+}
+
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(6px); }
+  60% { transform: translateY(3px); }
 }
 
 /* 3D Chunky Pop Buttons */
@@ -872,8 +945,8 @@ body {
 }
 
 .dir-icon-avatar {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   background: #15223c;
   border: 2px solid #273859;
   border-radius: 12px;
@@ -883,6 +956,20 @@ body {
   justify-content: center;
   font-size: 1.6rem;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.dir-icon-avatar.has-logo {
+  background: #080d19;
+  border-color: var(--color-brass);
+  padding: 4px;
+}
+
+.dir-site-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .dir-title {

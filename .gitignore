@@ -1,0 +1,11 @@
+# Source AVIF logos (working copies — PNGs committed instead)
+logos/
+
+# Python cache
+tools/__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db

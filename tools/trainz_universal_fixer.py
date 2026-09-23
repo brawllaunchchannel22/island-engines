@@ -115,7 +115,28 @@ class TrainzAssetFixer:
         if self.verbose:
             print(f"{prefix} {msg}")
 
-    def safe_write_text(self, file_path, content):
+    def read_text_file(self, file_path):
+        """Reads a text file with multi-encoding fallback (utf-8-sig, utf-8, windows-1252, latin-1)."""
+        encodings = ["utf-8-sig", "utf-8", "windows-1252", "latin-1"]
+        for enc in encodings:
+            try:
+                with open(file_path, "r", encoding=enc) as f:
+                    return f.read(), enc
+            except (UnicodeDecodeError, LookupError):
+                continue
+            except Exception as e:
+                self.log(f"Error reading {file_path}: {e}")
+                return None, None
+        
+        # Final fallback with error replacement
+        try:
+            with open(file_path, "r", encoding="utf-8", errors="replace") as f:
+                return f.read(), "utf-8"
+        except Exception as e:
+            self.log(f"Fatal error reading {file_path}: {e}")
+            return None, None
+
+    def safe_write_text(self, file_path, content, encoding="utf-8"):
         """Safely writes text to file, creating a backup on first modification."""
         if self.dry_run:
             self.log(f"[DRY-RUN] Would update: {file_path.name}")
@@ -130,7 +151,7 @@ class TrainzAssetFixer:
                     self.log(f"Warning: Could not create backup for {file_path.name}: {e}")
 
         try:
-            with open(file_path, "w", encoding="utf-8", errors="ignore") as f:
+            with open(file_path, "w", encoding=encoding, errors="replace") as f:
                 f.write(content)
             return True
         except Exception as e:
@@ -138,14 +159,21 @@ class TrainzAssetFixer:
             return False
 
     def fix_config_braces(self, text):
-        """Ensures all opening braces have matching closing braces without breaking valid blocks."""
-        open_count = text.count("{")
-        close_count = text.count("}")
+        """Ensures all opening braces have matching closing braces without being fooled by comments or strings."""
+        # Strip single-line comments (// and ;) and quoted strings to accurately count functional braces
+        stripped = re.sub(r'//.*$', '', text, flags=re.MULTILINE)
+        stripped = re.sub(r';.*$', '', stripped, flags=re.MULTILINE)
+        stripped = re.sub(r'"[^"\\]*(?:\\.[^"\\]*)*"', '', stripped)
+
+        open_count = stripped.count("{")
+        close_count = stripped.count("}")
 
         if open_count > close_count:
             diff = open_count - close_count
             fixed = text.rstrip() + ("\n}" * diff) + "\n"
             return fixed, True
+        elif close_count > open_count:
+            self.log(f"Warning: config.txt has {close_count - open_count} extra closing brace(s). Check manually.", prefix="[!]")
         return text, False
 
     def fix_legacy_bogeys(self, text, kind):
@@ -189,50 +217,88 @@ class TrainzAssetFixer:
                 return cleaned, True
         return text, False
 
+    def is_safe_subpath(self, base_dir, target_path):
+        """Verifies that target_path is strictly inside base_dir to prevent path traversal."""
+        try:
+            base_resolved = base_dir.resolve()
+            target_resolved = target_path.resolve()
+            # Python 3.9+ is_relative_to, with relative_to fallback
+            if hasattr(target_resolved, "is_relative_to"):
+                return target_resolved.is_relative_to(base_resolved)
+            target_resolved.relative_to(base_resolved)
+            return True
+        except (ValueError, RuntimeError):
+            return False
+
     def fix_missing_texture_files(self, asset_dir, text):
-        """Generates missing .texture.txt files referenced in config.txt (VE65)."""
+        """Generates missing .texture.txt files referenced in config.txt (VE65) with traversal protection."""
         fixed_count = 0
-        texture_refs = re.findall(r'["\']?([^"\'\r\n]+\.texture)["\']?', text, re.I)
+        texture_refs = re.findall(r'["\']?([^"\'\r\n\t<>]+\.texture)["\']?', text, re.I)
 
         for ref in texture_refs:
-            ref_clean = ref.strip().replace("\\", "/")
+            ref_clean = ref.strip().replace("\\", "/").lstrip("/")
             tex_txt_path = asset_dir / f"{ref_clean}.txt"
+
+            # Security check: prevent directory traversal
+            if not self.is_safe_subpath(asset_dir, tex_txt_path):
+                self.log(f"Security: Blocked path traversal attempt in texture ref: {ref}", prefix="[x]")
+                continue
 
             if not tex_txt_path.exists():
                 stem = ref_clean[:-8] if ref_clean.lower().endswith(".texture") else ref_clean
                 base_name = os.path.basename(stem)
+                target_dir = tex_txt_path.parent
 
-                # Look for matching image file in folder
-                img_candidates = list(asset_dir.glob(f"{base_name}.*"))
+                # Look for matching image file with deterministic priority (.tga > .bmp > .png > .jpg)
+                search_dirs = [target_dir, asset_dir] if target_dir != asset_dir else [asset_dir]
                 img_found = None
-                for c in img_candidates:
-                    if c.suffix.lower() in [".tga", ".bmp", ".png", ".jpg"]:
-                        img_found = c.name
+
+                ext_priority = {".tga": 0, ".bmp": 1, ".png": 2, ".jpg": 3, ".jpeg": 4}
+                for s_dir in search_dirs:
+                    if not s_dir.exists():
+                        continue
+                    candidates = [
+                        c for c in s_dir.glob(f"{base_name}.*")
+                        if c.suffix.lower() in ext_priority
+                    ]
+                    if candidates:
+                        # Sort deterministically by extension priority, then lower-case file name
+                        candidates.sort(key=lambda p: (ext_priority.get(p.suffix.lower(), 99), p.name.lower()))
+                        img_found = candidates[0].name
                         break
 
                 if not img_found:
-                    # Create safe fallback dummy TGA
-                    dummy_tga_path = asset_dir / f"{base_name}.tga"
+                    # Create safe fallback dummy TGA in the same directory as the texture.txt
+                    dummy_tga_path = target_dir / f"{base_name}.tga"
+                    if not self.is_safe_subpath(asset_dir, dummy_tga_path):
+                        continue
                     if not dummy_tga_path.exists() and not self.dry_run:
+                        target_dir.mkdir(parents=True, exist_ok=True)
                         dummy_tga_path.write_bytes(DUMMY_TGA_1X1)
                     img_found = f"{base_name}.tga"
 
                 content = f"Primary={img_found}\nAlpha={img_found}\nTile=st\n"
                 if not self.dry_run:
-                    tex_txt_path.parent.mkdir(parents=True, exist_ok=True)
+                    target_dir.mkdir(parents=True, exist_ok=True)
                     tex_txt_path.write_text(content, encoding="utf-8")
                 fixed_count += 1
 
         return fixed_count
 
     def fix_missing_wav_files(self, asset_dir, text):
-        """Generates silent PCM WAV stubs for referenced missing sounds (VE10/VE103)."""
+        """Generates silent PCM WAV stubs for referenced missing sounds (VE10/VE103) with traversal protection."""
         fixed_count = 0
-        wav_refs = re.findall(r'["\']?([^"\'\r\n]+\.wav)["\']?', text, re.I)
+        wav_refs = re.findall(r'["\']?([^"\'\r\n\t<>]+\.wav)["\']?', text, re.I)
 
         for ref in wav_refs:
-            clean_wav = ref.strip().replace("\\", "/")
+            clean_wav = ref.strip().replace("\\", "/").lstrip("/")
             wav_path = asset_dir / clean_wav
+
+            # Security check: prevent directory traversal
+            if not self.is_safe_subpath(asset_dir, wav_path):
+                self.log(f"Security: Blocked path traversal attempt in wav ref: {ref}", prefix="[x]")
+                continue
+
             if not wav_path.exists():
                 if not self.dry_run:
                     wav_path.parent.mkdir(parents=True, exist_ok=True)
@@ -251,11 +317,8 @@ class TrainzAssetFixer:
         self.stats["assets_checked"] += 1
         asset_changed = False
 
-        try:
-            with open(config_file, "r", encoding="utf-8", errors="ignore") as f:
-                content = f.read()
-        except Exception as e:
-            self.log(f"Could not read {config_file}: {e}")
+        content, detected_enc = self.read_text_file(config_file)
+        if content is None:
             return False
 
         # Extract basic info
@@ -284,7 +347,7 @@ class TrainzAssetFixer:
 
         # 4. Save config.txt if modified
         if asset_changed:
-            self.safe_write_text(config_file, content)
+            self.safe_write_text(config_file, content, encoding=detected_enc or "utf-8")
 
         # 5. Fix Missing Textures
         tex_fixed = self.fix_missing_texture_files(folder, content)
