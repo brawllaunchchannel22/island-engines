@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Video Credits & Asset List — Thomas Productions</title>
   <meta name="description" content="Credits and attribution list for Trainz 3D models, music, and assets that may be used in Thomas Productions videos." />
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +30,7 @@
   <header class="site-nav-header">
     <div class="container nav-inner">
       <a href="../index.html" class="studio-brand">
-        <div class="studio-logo-badge">🚂</div>
+        <div class="studio-logo-badge"><img src="../assets/images/island-engines-logo.png" alt="Island Engines Logo" /></div>
         <div class="studio-title-box">
           <h1>Island Engines</h1>
           <p>Video Credits</p>
@@ -38,6 +39,7 @@
       <nav class="nav-links-row">
         <a href="../index.html" class="nav-item">Home</a>
         <a href="../episodes.html" class="nav-item">Episodes</a>
+        <a href="../gallery.html" class="nav-item">Gallery</a>
         <a href="../other-sites.html" class="nav-item">Other Sites</a>
         <a href="../tools.html" class="nav-item">Tools</a>
         <a href="index.html" class="nav-item active credits-btn">📋 Video Credits</a>
@@ -161,5 +163,18 @@
   <!-- Scripts -->
   <script src="data.js"></script>
   <script src="app.js"></script>
+  <script>
+    // AI Notice dismiss — mirrors main.js logic (app.js doesn't include this)
+    (function () {
+      var bar = document.getElementById('ai-notice-bar');
+      var btn = document.getElementById('ai-notice-dismiss');
+      if (bar && btn) {
+        btn.addEventListener('click', function () {
+          bar.classList.add('is-dismissed');
+          try { localStorage.setItem('island_engines_ai_notice_dismissed', '1'); } catch (e) {}
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

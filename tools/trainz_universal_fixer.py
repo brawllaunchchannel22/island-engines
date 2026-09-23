@@ -1,24 +1,33 @@
 #!/usr/bin/env python3
 """
 ================================================================================
-🚂 Trainz Universal Asset Fixer (TRS19 / TRS22 / Trainz Plus)
+Trainz Asset Fixer  (TRS19 / TRS22 / Trainz Plus)
 ================================================================================
-A safe, non-destructive, cross-platform repair utility for Trainz Simulator assets.
-Supports Linux (Steam/Proton), Windows, and macOS.
+A safe, non-destructive repair utility for Trainz Simulator content.
+Works on Linux (Steam/Proton), Windows, and macOS.
 
-Features:
-- Automatic detection of local Trainz editing and build folders.
-- Safe backup system: Creates '.bak' copies before modifying any file.
-- Dry-run mode: Preview fixes without touching files (--dry-run).
-- Non-destructive: Never deletes user assets, models, or textures.
-- Repairs common Content Manager validation errors:
-  * VE146: Legacy root bogey tags to modern bogeys container.
-  * VE166: Missing or malformed thumbnail containers.
-  * VE65: Missing .texture.txt reference files.
-  * VE39 / VE68: Power-of-two texture dimensions.
-  * VE10 / VE103: Missing sound WAV stubs.
-  * VE179: Invalid region strings (e.g., "Europe", "sodor").
-  * Syntax: Unbalanced braces in config.txt.
+What it actually does
+  - VE146  : Converts old root bogey tags to the modern bogeys container.
+  - VE65   : Creates missing .texture.txt stub files (uses existing image or
+             a 1x1 dummy TGA so the validator stops complaining — the asset
+             may still look broken until you supply a real texture).
+  - VE10 / VE103 : Writes a silent WAV stub for missing sound references
+             (the sound slot is filled, but it will be silent until replaced).
+  - VE179  : Warns about invalid region values — does NOT auto-fix, because
+             the right region KUID depends on your project (Sodor, real world,
+             etc.) and must be set manually in Content Manager.
+  - Braces : Warns about mismatched { } in config.txt — does NOT blindly
+             append closing braces, as that could corrupt working configs.
+
+What it does NOT do
+  - VE39 / VE68 : No texture power-of-two resizing.
+  - VE13 / VE48 : No category-class or trainz-build patching.
+  - VE217 : No .m.reflect → .m.onetex renaming.
+
+Safety
+  - Creates .bak backup before touching any file (first run only).
+  - Use --dry-run to preview everything without writing a single byte.
+  - Path traversal protection on all file generation steps.
 ================================================================================
 """
 
@@ -30,17 +39,21 @@ import shutil
 import argparse
 from pathlib import Path
 
-# Minimal 1x1 RGBA TGA dummy texture (22 bytes)
+# 1x1 dummy TGA — 24-bit BGR, Top-Left origin flag (0x20 in image descriptor).
+# More compatible with older TGA loaders in TRS19/TRS22 than RGBA variants.
 DUMMY_TGA_1X1 = bytes([
     0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00,
-    0x20, 0x08, 0x80, 0x80, 0x80, 0xFF
+    0x18, 0x20,              # PixelDepth: 24-bit, ImageDescriptor: Top-Left origin
+    0x80, 0x80, 0x80         # 1 grey BGR pixel
 ])
 
-# Minimal 44-byte silent PCM WAV file (44.1kHz, 16-bit, Mono)
-SILENT_WAV_44B = bytes([
+# 1-sample silent WAV (46 bytes, 44.1kHz 16-bit Mono).
+# ChunkSize = 38 (36 + 2 payload bytes), Subchunk2Size = 2 (1 sample × 2 bytes).
+# The 0-byte version (44B) is rejected by some strict OpenAL/DirectX pipelines.
+SILENT_WAV_46B = bytes([
     0x52, 0x49, 0x46, 0x46,  # 'RIFF'
-    0x24, 0x00, 0x00, 0x00,  # ChunkSize: 36
+    0x26, 0x00, 0x00, 0x00,  # ChunkSize: 38
     0x57, 0x41, 0x56, 0x45,  # 'WAVE'
     0x66, 0x6D, 0x74, 0x20,  # 'fmt '
     0x10, 0x00, 0x00, 0x00,  # Subchunk1Size: 16
@@ -51,7 +64,8 @@ SILENT_WAV_44B = bytes([
     0x02, 0x00,              # BlockAlign: 2
     0x10, 0x00,              # BitsPerSample: 16
     0x64, 0x61, 0x74, 0x61,  # 'data'
-    0x00, 0x00, 0x00, 0x00   # Subchunk2Size: 0
+    0x02, 0x00, 0x00, 0x00,  # Subchunk2Size: 2 bytes
+    0x00, 0x00               # 1 sample of silence
 ])
 
 
@@ -70,18 +84,19 @@ def find_default_trainz_paths():
             for b in glob.glob(os.path.join(lb, "build*", "editing")):
                 candidates.append(b)
 
-    # 2. Windows LocalAppData
+    # 2. Windows LocalAppData — also walk up to depth 3 for dynamic build numbers
     local_app_data = os.environ.get("LOCALAPPDATA")
     if local_app_data:
-        win_bases = [
-            os.path.join(local_app_data, "N3V Games", "trs22"),
-            os.path.join(local_app_data, "N3V Games", "trs19"),
-            os.path.join(local_app_data, "N3V Games", "TANE")
-        ]
-        for wb in win_bases:
-            if os.path.exists(wb):
-                for b in glob.glob(os.path.join(wb, "build*", "editing")):
-                    candidates.append(b)
+        n3v_root = os.path.join(local_app_data, "N3V Games")
+        if os.path.exists(n3v_root):
+            for root, dirs, _ in os.walk(n3v_root):
+                depth = root.replace(n3v_root, "").count(os.sep)
+                if depth >= 3:
+                    dirs.clear()  # prune
+                    continue
+                for d in dirs:
+                    if d.lower() == "editing":
+                        candidates.append(os.path.join(root, d))
 
     # 3. macOS Application Support
     mac_bases = [
@@ -105,10 +120,9 @@ class TrainzAssetFixer:
             "assets_checked": 0,
             "assets_repaired": 0,
             "bogeys_fixed": 0,
-            "braces_balanced": 0,
             "textures_created": 0,
             "sounds_stubbed": 0,
-            "regions_cleaned": 0
+            "regions_warned": 0
         }
 
     def log(self, msg, prefix="[*]"):
@@ -159,8 +173,10 @@ class TrainzAssetFixer:
             return False
 
     def fix_config_braces(self, text):
-        """Ensures all opening braces have matching closing braces without being fooled by comments or strings."""
-        # Strip single-line comments (// and ;) and quoted strings to accurately count functional braces
+        """Checks for unbalanced { } in config.txt and warns — does not auto-fix.
+        Blindly appending closing braces at the end of a file is risky: the missing
+        brace could belong anywhere in the middle of the config, not at the end."""
+        # Strip comments and quoted strings before counting braces
         stripped = re.sub(r'//.*$', '', text, flags=re.MULTILINE)
         stripped = re.sub(r';.*$', '', stripped, flags=re.MULTILINE)
         stripped = re.sub(r'"[^"\\]*(?:\\.[^"\\]*)*"', '', stripped)
@@ -170,20 +186,49 @@ class TrainzAssetFixer:
 
         if open_count > close_count:
             diff = open_count - close_count
-            fixed = text.rstrip() + ("\n}" * diff) + "\n"
-            return fixed, True
+            self.log(
+                f"config.txt has {diff} unclosed brace(s) — please fix manually. "
+                f"(Auto-appending would likely place the '}}' in the wrong spot.)",
+                prefix="[!]"
+            )
         elif close_count > open_count:
-            self.log(f"Warning: config.txt has {close_count - open_count} extra closing brace(s). Check manually.", prefix="[!]")
+            self.log(
+                f"config.txt has {close_count - open_count} extra closing brace(s) — check manually.",
+                prefix="[!]"
+            )
         return text, False
 
-    def fix_legacy_bogeys(self, text, kind):
-        """Converts legacy root bogey tags to the modern 'bogeys' container (VE146)."""
-        if "bogeys" in text or not any(k in kind.lower() for k in ["traincar", "locomotive"]):
+
+    def fix_legacy_bogeys(self, text, kind, config_file=None):
+        """Converts legacy root bogey tags to the modern 'bogeys' container (VE146).
+
+        Uses a regex to detect an existing bogeys { } block so that a comment or
+        username containing the word 'bogeys' doesn't cause the fix to be skipped.
+        Forces a backup of config.txt before writing, regardless of --no-backup,
+        because bogey conversion is the riskiest structural change this tool makes.
+        """
+        if not any(k in kind.lower() for k in ["traincar", "locomotive"]):
+            return text, False
+
+        # Skip only if an actual bogeys block already exists (not just the word in a comment)
+        if re.search(r'^\s*bogeys\s*\{', text, re.MULTILINE | re.I):
             return text, False
 
         bogey_matches = list(re.finditer(r'^\s*(bogey(?:-[0-9a-zA-Z_-]+)?)\s+(<[^>]+>)\s*$', text, re.MULTILINE | re.I))
         if not bogey_matches:
             return text, False
+
+        # Force a backup before bogey conversion — this is the riskiest change
+        if config_file is not None and not self.dry_run:
+            bak_path = config_file.with_suffix(config_file.suffix + ".bak")
+            if not bak_path.exists():
+                try:
+                    import shutil as _shutil
+                    _shutil.copy2(config_file, bak_path)
+                    self.log(f"Forced backup before bogey conversion: {bak_path.name}", prefix="[B]")
+                except Exception as e:
+                    self.log(f"Could not create forced backup — skipping bogey conversion: {e}", prefix="[x]")
+                    return text, False
 
         containers = []
         new_text = text
@@ -207,14 +252,20 @@ class TrainzAssetFixer:
         return new_text, True
 
     def fix_invalid_region(self, text):
-        """Removes invalid non-KUID region strings (e.g. region "Europe") that trigger VE179."""
+        """Warns about invalid non-KUID region strings (VE179) without auto-deleting.
+        Region KUIDs are project-specific (e.g. Sodor vs. real world) and cannot be
+        safely guessed by a script — manual setting in Content Manager is required."""
         pattern = r'^\s*region\s+["\']?([^"\'<\r\n]+)["\']?\s*$'
         match = re.search(pattern, text, re.MULTILINE | re.I)
         if match:
             val = match.group(1).strip()
             if not val.startswith("<kuid"):
-                cleaned = re.sub(pattern, "", text, flags=re.MULTILINE | re.I)
-                return cleaned, True
+                self.log(
+                    f"Ungültiger region-Tag gefunden ('{val}') – bitte manuell im "
+                    f"Content Manager auf eine gültige Region-KUID setzen (VE179).",
+                    prefix="[!]"
+                )
+                return text, True  # True = warning was issued; text unchanged
         return text, False
 
     def is_safe_subpath(self, base_dir, target_path):
@@ -233,7 +284,7 @@ class TrainzAssetFixer:
     def fix_missing_texture_files(self, asset_dir, text):
         """Generates missing .texture.txt files referenced in config.txt (VE65) with traversal protection."""
         fixed_count = 0
-        texture_refs = re.findall(r'["\']?([^"\'\r\n\t<>]+\.texture)["\']?', text, re.I)
+        texture_refs = [r.strip(" \"';") for r in re.findall(r'["\']?([^"\'\r\n\t<>]+\.texture)["\']?', text, re.I)]
 
         for ref in texture_refs:
             ref_clean = ref.strip().replace("\\", "/").lstrip("/")
@@ -277,7 +328,7 @@ class TrainzAssetFixer:
                         dummy_tga_path.write_bytes(DUMMY_TGA_1X1)
                     img_found = f"{base_name}.tga"
 
-                content = f"Primary={img_found}\nAlpha={img_found}\nTile=st\n"
+                content = f"Primary={img_found}\nTile=st\n"
                 if not self.dry_run:
                     target_dir.mkdir(parents=True, exist_ok=True)
                     tex_txt_path.write_text(content, encoding="utf-8")
@@ -302,7 +353,7 @@ class TrainzAssetFixer:
             if not wav_path.exists():
                 if not self.dry_run:
                     wav_path.parent.mkdir(parents=True, exist_ok=True)
-                    wav_path.write_bytes(SILENT_WAV_44B)
+                    wav_path.write_bytes(SILENT_WAV_46B)
                 fixed_count += 1
 
         return fixed_count
@@ -327,23 +378,20 @@ class TrainzAssetFixer:
         name_m = re.search(r'^\s*username\s+["\']?([^"\r\n]+)', content, re.MULTILINE | re.I)
         name = name_m.group(1).strip() if name_m else folder.name
 
-        # 1. Fix Braces
+        # 1. Check Braces (warn only, no auto-fix)
         content, b_fixed = self.fix_config_braces(content)
-        if b_fixed:
-            asset_changed = True
-            self.stats["braces_balanced"] += 1
+        # fix_config_braces always returns False — braces not auto-fixed
 
-        # 2. Fix Legacy Bogeys
-        content, bg_fixed = self.fix_legacy_bogeys(content, kind)
+        # 2. Fix Legacy Bogeys (forced backup happens inside if needed)
+        content, bg_fixed = self.fix_legacy_bogeys(content, kind, config_file=config_file)
         if bg_fixed:
             asset_changed = True
             self.stats["bogeys_fixed"] += 1
 
-        # 3. Fix Invalid Region
+        # 3. Check Invalid Region (warn only)
         content, r_fixed = self.fix_invalid_region(content)
         if r_fixed:
-            asset_changed = True
-            self.stats["regions_cleaned"] += 1
+            self.stats["regions_warned"] += 1
 
         # 4. Save config.txt if modified
         if asset_changed:
@@ -390,23 +438,33 @@ class TrainzAssetFixer:
 
     def print_summary(self):
         print("\n" + "=" * 60)
-        print("📊 TRAINZ UNIVERSAL ASSET FIXER — SUMMARY REPORT")
+        print("TRAINZ ASSET FIXER — SUMMARY REPORT")
         print("=" * 60)
-        print(f"  Assets Examined:        {self.stats['assets_checked']}")
-        print(f"  Assets Repaired:        {self.stats['assets_repaired']}")
-        print(f"  Legacy Bogeys Fixed:    {self.stats['bogeys_fixed']}")
-        print(f"  Braces Balanced:        {self.stats['braces_balanced']}")
-        print(f"  Missing Textures Fixed: {self.stats['textures_created']}")
-        print(f"  Missing Sounds Fixed:   {self.stats['sounds_stubbed']}")
-        print(f"  Invalid Regions Fixed:  {self.stats['regions_cleaned']}")
+        print(f"  Assets scanned:         {self.stats['assets_checked']}")
+        print(f"  Assets changed:         {self.stats['assets_repaired']}")
+        print(f"  Bogeys converted:       {self.stats['bogeys_fixed']}")
+        print(f"  Texture stubs created:  {self.stats['textures_created']}")
+        print(f"  Sound stubs created:    {self.stats['sounds_stubbed']}")
+        print(f"  Region warnings:        {self.stats['regions_warned']}")
         if self.dry_run:
-            print("  Status: DRY RUN ONLY (No changes written to disk)")
+            print("  Mode: DRY RUN — no files were written")
         else:
-            print("  Status: All modifications safely committed with .bak backups.")
+            print("  Mode: LIVE — .bak backups created before each change")
         print("=" * 60 + "\n")
 
 
+
+DISCLAIMER = """
+================================================================================
+ USE AT YOUR OWN RISK
+ This script modifies Trainz content files. The author takes no responsibility
+ for broken assets, corrupted configs, or any other damage caused by running it.
+ Always run with --dry-run first and keep your own backups.
+================================================================================
+"""
+
 def main():
+    print(DISCLAIMER)
     parser = argparse.ArgumentParser(
         description="Trainz Universal Asset Fixer — Safe, non-destructive repair tool for TRS19/TRS22."
     )

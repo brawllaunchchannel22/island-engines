@@ -4,52 +4,6 @@
    Heavy borders, dark navy canvas, Titan / Fredoka typography, and gold brass accents.
    ============================================================================== */
 
-:root {
-  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
-  --font-display: 'Titan One', 'Alfa Slab One', cursive;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  --bg-page: #060911;
-  --bg-header: #091022;
-  --bg-card: #0d1527;
-  --bg-card-hover: #15223c;
-  --bg-subtle: #101a2f;
-
-  --border: #1f2e4d;
-  --border-light: #2b3e66;
-
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-
-  --blue-primary: #0284c7;
-  --blue-hover: #0369a1;
-  --gold-accent: #f59e0b;
-  --gold-dim: #d97706;
-  --color-gold-bright: #ffde59;
-
-  --radius-sm: 8px;
-  --radius-md: 14px;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scrollbar-gutter: stable;
-}
-
-body {
-  font-family: var(--font-main);
-  background-color: var(--bg-page);
-  color: var(--text-main);
-  line-height: 1.6;
-}
-
 /* Section Title with Sodor Display Font */
 .section-title {
   font-family: var(--font-display) !important;
@@ -66,7 +20,7 @@ body {
 
 .stat-pill {
   background: var(--bg-card);
-  border: 2px solid var(--border);
+  border: 2px solid #1e293b;
   padding: 0.45rem 0.95rem;
   border-radius: 9999px;
   font-size: 0.85rem;
@@ -90,9 +44,9 @@ body {
 
 .notice-box {
   background: var(--bg-card);
-  border: 2px solid var(--border);
-  border-left: 6px solid var(--gold-accent);
-  border-radius: var(--radius-md);
+  border: 2px solid #1e293b;
+  border-left: 6px solid var(--color-brass);
+  border-radius: var(--radius-card);
   box-shadow: 0 4px 0 #000, 0 10px 24px rgba(0, 0, 0, 0.5);
   padding: 1.5rem 1.75rem;
   margin-bottom: 2rem;
@@ -104,7 +58,7 @@ body {
   gap: 0.5rem;
   margin-bottom: 0.6rem;
   font-size: 1rem;
-  color: var(--gold-accent);
+  color: var(--color-brass);
 }
 
 .notice-box p {
@@ -131,7 +85,7 @@ body {
   content: "•";
   position: absolute;
   left: 0.35rem;
-  color: var(--gold-accent);
+  color: var(--color-brass);
   font-weight: bold;
 }
 
@@ -168,7 +122,7 @@ body {
   left: 0.9rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-dim);
+  color: var(--text-muted);
   font-size: 0.95rem;
   pointer-events: none;
 }
@@ -177,7 +131,7 @@ body {
   width: 100%;
   padding: 0.85rem 2.5rem 0.85rem 2.6rem;
   background: #091022;
-  border: 2px solid var(--border);
+  border: 2px solid #1e293b;
   border-radius: 12px;
   color: #ffffff;
   font-size: 0.95rem;
@@ -189,7 +143,7 @@ body {
 
 #search-input:focus {
   outline: none;
-  border-color: var(--gold-accent);
+  border-color: var(--color-brass);
   background: #0d1527;
   box-shadow: 0 4px 0 #000, 0 0 15px rgba(245, 158, 11, 0.3);
 }
@@ -231,7 +185,7 @@ body {
   font-weight: 700;
   color: var(--text-muted);
   background: #091022;
-  border: 2px solid var(--border);
+  border: 2px solid #1e293b;
   padding: 0.45rem 0.95rem;
   border-radius: 9999px;
   box-shadow: 0 3px 0 #000;
@@ -288,7 +242,7 @@ body {
 }
 
 .tab-btn:hover {
-  border-color: var(--gold-accent);
+  border-color: var(--color-brass);
   color: #ffffff;
   transform: translateY(-2px);
 }
@@ -304,7 +258,7 @@ body {
 
 .active-author-filter {
   background: rgba(2, 132, 199, 0.15);
-  border: 2px solid var(--blue-primary);
+  border: 2px solid var(--color-sodor-blue);
   padding: 0.5rem 1rem;
   border-radius: 12px;
   font-size: 0.88rem;
@@ -319,7 +273,7 @@ body {
 .btn-link {
   background: none;
   border: none;
-  color: var(--gold-accent);
+  color: var(--color-brass);
   font-weight: 800;
   cursor: pointer;
   text-decoration: underline;
@@ -340,7 +294,7 @@ body {
 .item-card {
   background: #0d1527;
   border: 2px solid #1f2e4d;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   box-shadow: 0 4px 0 #000, 0 8px 18px rgba(0, 0, 0, 0.4);
   padding: 1.1rem 1.25rem;
   display: flex;
@@ -353,7 +307,7 @@ body {
 
 .item-card:hover {
   transform: translateY(-4px);
-  border-color: var(--gold-accent);
+  border-color: var(--color-brass);
   box-shadow: 0 6px 0 #000, 0 14px 28px rgba(0, 0, 0, 0.6);
 }
 
@@ -399,7 +353,7 @@ body {
 }
 
 .author-btn {
-  color: var(--gold-accent);
+  color: var(--color-brass);
   font-weight: 600;
   cursor: pointer;
   background: none;
@@ -428,13 +382,13 @@ body {
 }
 
 .kuid-code {
-  font-family: var(--font-mono);
+  font-family: var(--font-code);
   font-size: 0.74rem;
   background: #0d1219;
   color: #94a3b8;
   padding: 0.15rem 0.45rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
+  border-radius: 8px;
+  border: 1px solid #1e293b;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -443,11 +397,11 @@ body {
 
 .kuid-code:hover {
   color: #ffffff;
-  border-color: var(--blue-primary);
+  border-color: var(--color-sodor-blue);
 }
 
 .item-source {
-  color: var(--text-dim);
+  color: var(--text-muted);
   font-size: 0.75rem;
   white-space: nowrap;
   overflow: hidden;
@@ -460,7 +414,7 @@ body {
    ============================================================================== */
 .creators-section {
   margin-top: 3.5rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #1e293b;
   padding-top: 2rem;
 }
 
@@ -494,7 +448,7 @@ body {
 }
 
 .creator-tag:hover {
-  border-color: var(--gold-accent);
+  border-color: var(--color-brass);
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 5px 0 #000;
@@ -516,8 +470,8 @@ body {
   text-align: center;
   padding: 3rem 1rem;
   background: var(--bg-card);
-  border: 1px dashed var(--border);
-  border-radius: var(--radius-md);
+  border: 1px dashed #1e293b;
+  border-radius: var(--radius-card);
 }
 
 .empty-state p {
@@ -526,28 +480,28 @@ body {
 }
 
 .btn-simple {
-  background: var(--blue-primary);
+  background: var(--color-sodor-blue);
   color: #ffffff;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
   font-weight: 600;
   font-size: 0.85rem;
   cursor: pointer;
 }
 
 .btn-simple:hover {
-  background: var(--blue-hover);
+  background: var(--color-sodor-blue);
 }
 
 /* ==============================================================================
    Footer
    ============================================================================== */
 .footer {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #1e293b;
   padding: 2rem 0;
   margin-top: 4rem;
-  background: var(--bg-header);
+  background: var(--bg-surface);
   text-align: center;
 }
 
@@ -564,7 +518,7 @@ body {
 
 .footer-small {
   font-size: 0.75rem;
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
 
 /* ==============================================================================
@@ -577,7 +531,7 @@ body {
   background: #0284c7;
   color: #ffffff;
   padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 600;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);

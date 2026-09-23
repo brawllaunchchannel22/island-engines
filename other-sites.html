@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Community Workshops — Island Engines Directory</title>
   <meta name="description" content="A curated directory of community workshops, 3D modellers, and resources in the Trainz Thomas & Friends community." />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +29,7 @@
   <header class="site-nav-header">
     <div class="container nav-inner">
       <a href="index.html" class="studio-brand">
-        <div class="studio-logo-badge">🚂</div>
+        <div class="studio-logo-badge"><img src="assets/images/island-engines-logo.png" alt="Island Engines Logo" /></div>
         <div class="studio-title-box">
           <h1>Island Engines</h1>
           <p>Community Directory</p>
@@ -37,6 +38,7 @@
       <nav class="nav-links-row">
         <a href="index.html" class="nav-item">Home</a>
         <a href="episodes.html" class="nav-item">Episodes</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
         <a href="other-sites.html" class="nav-item active">Other Sites</a>
         <a href="tools.html" class="nav-item">Tools</a>
         <a href="credits/index.html" class="nav-item credits-btn">📋 Video Credits</a>
@@ -44,49 +46,21 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container container-wide">
 
-    <!-- Workshop Map Hero — Playful Scattered Logo Display -->
+    <!-- Workshop Map Hero — Playful Showcase Layout -->
     <section class="workshop-map-hero">
-      <h1 class="map-hero-title">🌐 Community Workshops</h1>
-      <p class="map-hero-subtitle">
-        The Trainz Thomas community's finest 3D artists, route builders, and creators — all in one place.
-      </p>
+      <div class="map-hero-header">
+        <h1 class="map-hero-title">🌐 Community Workshops</h1>
+        <p class="map-hero-subtitle">
+          The Trainz Thomas community's finest 3D artists, route builders, and creators — all in one place.
+        </p>
+      </div>
       <div class="map-logo-scatter" id="map-logo-scatter">
         <!-- Populated dynamically by main.js -->
       </div>
     </section>
-
-    <!-- Divider -->
-    <div class="map-to-grid-divider">
-      <span>🔍 Full Directory</span>
-    </div>
-
-    <!-- Search Box -->
-    <div class="directory-search-bar">
-      <input 
-        type="text" 
-        id="site-search-input" 
-        class="directory-input" 
-        placeholder="🔍 Search community workshops (e.g. Boilersmiths, Crovan's Gate, Mid Sodor, Westernroutes)..." 
-      />
-    </div>
-
-    <!-- 20 Community Workshop Cards -->
-    <div class="directory-grid" id="community-sites-container">
-      <!-- Populated dynamically by main.js -->
-    </div>
   </main>
-
-  <footer class="studio-footer">
-    <div class="container">
-      <p><strong>Island Engines</strong> — A fan-made production filmed in Trainz Railroad Simulator.</p>
-      <p>
-        All linked sites belong to their respective creators. 
-        <em>Thomas &amp; Friends™</em> belongs to Mattel / Gullane / The Awdry Family.
-      </p>
-    </div>
-  </footer>
 
   <script src="main.js"></script>
 </body>

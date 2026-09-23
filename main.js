@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://theoldguardsvan3d.jimdofree.com/",
       domain: "theoldguardsvan3d.jimdofree.com",
       icon: "🏮",
-      logo: "assets/images/logos/tramway_3d.png",
+      logo: "assets/images/logos/image_2021_12_02_201503.png",
       tag: "Rolling Stock & Figures",
       desc: "Classic brake vans, workmen figures, and authentic heritage rolling stock."
     },
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://new-weymouth-workshops.jimdofree.com/",
       domain: "new-weymouth-workshops.jimdofree.com",
       icon: "🏭",
-      logo: "assets/images/logos/sodor_factories.png",
+      logo: "assets/images/logos/logo2invis.png",
       tag: "Community Workshop",
       desc: "Locomotive releases, heritage rolling stock, and railway accessories."
     },
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://mainlandstudios.wixsite.com/mysite",
       domain: "mainlandstudios.wixsite.com",
       icon: "🎬",
-      logo: "assets/images/logos/the_marvelous_mainland_model_works.png",
+      logo: "assets/images/logos/untitled.png",
       tag: "Series & 3D Assets",
       desc: "Outstanding Trainz series production team, models, and community resources."
     },
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://thetardisexpress.wixsite.com/ravenshireworks",
       domain: "thetardisexpress.wixsite.com",
       icon: "🦅",
-      logo: "assets/images/logos/ravenshire_works.png",
+      logo: "assets/images/logos/rw_logo.png",
       tag: "Custom Models",
       desc: "Creative custom rolling stock, vintage steam locomotives, and diesels."
     },
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: "https://sudrianindustries.wixsite.com/sudrianindustries",
       domain: "sudrianindustries.wixsite.com",
       icon: "🏗️",
-      logo: "assets/images/logos/tsi.png",
+      logo: "assets/images/logos/image_2021_12_02_201407.png",
       tag: "Industrial Stock",
       desc: "Industrial shunters, heavy rolling stock, cranes, and quarry scenery."
     },
@@ -166,15 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
       icon: "🔧",
       tag: "Garage & Scenery",
       desc: "Unique custom 3D models, roadside clutter, and creative character additions."
-    },
-    {
-      name: "Sudrian Boilersmiths (Wix Archive)",
-      url: "https://sodorboilersmiths.wixsite.com/sudrianboilersmiths",
-      domain: "sodorboilersmiths.wixsite.com",
-      icon: "📦",
-      logo: "assets/images/logos/sodorworkshopssister.png",
-      tag: "Legacy Archive",
-      desc: "Archive of classic locomotive and rolling stock releases from the Boilersmiths."
     }
   ];
 
@@ -293,21 +284,68 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxImg = document.getElementById("lightbox-img");
   const lightboxCaption = document.getElementById("lightbox-caption");
   const lightboxCloseBtn = document.getElementById("lightbox-close-btn");
+  const lightboxPrevBtn = document.getElementById("lightbox-prev-btn");
+  const lightboxNextBtn = document.getElementById("lightbox-next-btn");
 
-  if (lightbox && lightboxImg && lightboxCaption) {
-    document.querySelectorAll(".lightbox-trigger").forEach(trigger => {
-      trigger.addEventListener("click", () => {
-        const fullSrc = trigger.getAttribute("data-full");
-        const caption = trigger.getAttribute("data-caption") || "";
-        if (fullSrc) {
-          lightboxImg.src = fullSrc;
+  if (lightbox && lightboxImg) {
+    const triggers = Array.from(document.querySelectorAll(".lightbox-trigger"));
+    let currentIndex = -1;
+
+    function showImage(index) {
+      if (index < 0 || index >= triggers.length) return;
+      currentIndex = index;
+      const trigger = triggers[currentIndex];
+      const fullSrc = trigger.getAttribute("data-full");
+      const caption = trigger.getAttribute("data-caption") || "";
+
+      if (fullSrc) {
+        lightboxImg.src = fullSrc;
+        if (lightboxCaption) {
           lightboxCaption.textContent = caption;
-          lightbox.classList.add("open");
-          lightbox.setAttribute("aria-hidden", "false");
-          document.body.style.overflow = "hidden"; // Prevent page background scroll
+          lightboxCaption.style.display = caption.trim() ? "block" : "none";
         }
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden"; // Prevent page background scroll
+      }
+    }
+
+    triggers.forEach((trigger, idx) => {
+      trigger.addEventListener("click", () => {
+        showImage(idx);
       });
     });
+
+    function nextImage() {
+      if (triggers.length <= 1) return;
+      const nextIndex = (currentIndex + 1) % triggers.length;
+      showImage(nextIndex);
+    }
+
+    function prevImage() {
+      if (triggers.length <= 1) return;
+      const prevIndex = (currentIndex - 1 + triggers.length) % triggers.length;
+      showImage(prevIndex);
+    }
+
+    if (lightboxPrevBtn) {
+      lightboxPrevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        prevImage();
+      });
+    }
+
+    if (lightboxNextBtn) {
+      lightboxNextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        nextImage();
+      });
+    }
+
+    if (triggers.length <= 1) {
+      if (lightboxPrevBtn) lightboxPrevBtn.style.display = "none";
+      if (lightboxNextBtn) lightboxNextBtn.style.display = "none";
+    }
 
     function closeLightbox() {
       lightbox.classList.remove("open");
@@ -315,7 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "";
       setTimeout(() => {
         lightboxImg.src = "";
-        lightboxCaption.textContent = "";
+        if (lightboxCaption) lightboxCaption.textContent = "";
       }, 200);
     }
 
@@ -331,8 +369,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && lightbox.classList.contains("open")) {
+      if (!lightbox.classList.contains("open")) return;
+
+      if (e.key === "Escape") {
         closeLightbox();
+      } else if (e.key === "ArrowRight") {
+        nextImage();
+      } else if (e.key === "ArrowLeft") {
+        prevImage();
       }
     });
   }

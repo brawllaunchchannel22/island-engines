@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Community Tools & Downloads — Island Engines</title>
-  <meta name="description" content="Safe, non-destructive tools and downloads for Trainz Railroad Simulator, including the Trainz Universal Asset Fixer." />
+  <title>Tools &amp; Downloads — Island Engines</title>
+  <meta name="description" content="Safe, non-destructive tools for Trainz Railroad Simulator, including the Trainz Asset Fixer." />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,22 +14,36 @@
       document.documentElement.classList.add('hide-ai-notice');
     }
   </script>
+  <style>
+    .docs-accordion { margin-top: 20px; border: 2px solid #1e293b; border-radius: 12px; overflow: hidden; }
+    .docs-accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: rgba(255,255,255,0.04); cursor: pointer; user-select: none; font-family: var(--font-heading); font-size: 0.9rem; font-weight: 800; color: var(--text-primary); border: none; width: 100%; text-align: left; transition: background 0.2s ease; }
+    .docs-accordion-header:hover { background: rgba(255,255,255,0.08); }
+    .docs-accordion-arrow { transition: transform 0.25s ease; font-style: normal; font-size: 0.75rem; color: var(--text-muted); }
+    .docs-accordion-header[aria-expanded="true"] .docs-accordion-arrow { transform: rotate(180deg); }
+    .docs-accordion-body { display: none; padding: 20px 18px; border-top: 2px solid #1e293b; background: rgba(0,0,0,0.2); font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+    .docs-accordion-body.is-open { display: block; }
+    .docs-accordion-body h3 { font-family: var(--font-heading); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-brass); margin: 16px 0 8px; }
+    .docs-accordion-body h3:first-child { margin-top: 0; }
+    .docs-accordion-body ul { list-style: none; padding: 0; margin: 0 0 6px 0; }
+    .docs-accordion-body ul li { padding: 3px 0 3px 16px; position: relative; }
+    .docs-accordion-body ul li::before { content: "→"; position: absolute; left: 0; color: var(--color-brass); font-size: 0.78rem; }
+    .docs-accordion-body code { background: rgba(255,255,255,0.08); border-radius: 4px; padding: 1px 6px; font-family: var(--font-code); font-size: 0.82rem; color: var(--color-gold-bright); }
+    .docs-warn { background: rgba(245,158,11,0.1); border-left: 3px solid var(--color-brass); border-radius: 0 8px 8px 0; padding: 8px 12px; margin: 10px 0; font-size: 0.83rem; color: #fcd34d; }
+  </style>
 </head>
 <body>
 
-  <!-- AI Transparency Notice (Dismissible) -->
   <div class="ai-notice-bar" id="ai-notice-bar">
     <div class="ai-notice-text">
-      🤖 <strong>AI Transparency:</strong> This tool utility and download portal were created with <span>AI assistance</span> for open development.
+      🤖 <strong>AI Transparency:</strong> This tool download was created with <span>AI assistance</span>.
     </div>
-    <button type="button" class="ai-notice-dismiss" id="ai-notice-dismiss" aria-label="Dismiss AI notice" title="Dismiss notice">✕</button>
+    <button type="button" class="ai-notice-dismiss" id="ai-notice-dismiss" aria-label="Dismiss AI notice">✕</button>
   </div>
 
-  <!-- Studio Header & Navigation -->
   <header class="site-nav-header">
     <div class="container nav-inner">
       <a href="index.html" class="studio-brand">
-        <div class="studio-logo-badge">🚂</div>
+        <div class="studio-logo-badge"><img src="assets/images/island-engines-logo.png" alt="Island Engines Logo" /></div>
         <div class="studio-title-box">
           <h1>Island Engines</h1>
           <p>Community Tools</p>
@@ -37,6 +52,7 @@
       <nav class="nav-links-row">
         <a href="index.html" class="nav-item">Home</a>
         <a href="episodes.html" class="nav-item">Episodes</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
         <a href="other-sites.html" class="nav-item">Other Sites</a>
         <a href="tools.html" class="nav-item active">Tools</a>
         <a href="credits/index.html" class="nav-item credits-btn">📋 Video Credits</a>
@@ -45,83 +61,97 @@
   </header>
 
   <main class="container">
-
     <div style="margin-top: 16px; margin-bottom: 32px;">
       <a href="index.html" style="color: var(--color-coastal-blue); text-decoration: none; font-size: 0.88rem; font-weight: 600;">← Back to Home</a>
-      <h1 class="section-title" style="font-size: 2.4rem; margin-top: 12px;">🛠️ Community Tools & Downloads</h1>
-      <p class="section-subtitle" style="font-size: 1.05rem;">
-        Helpful, non-destructive utilities and upcoming reskin packages for Trainz Railroad Simulator.
-      </p>
+      <h1 class="section-title" style="font-size: 2.4rem; margin-top: 12px;">🛠️ Tools &amp; Downloads</h1>
+      <p class="section-subtitle" style="font-size: 1.05rem;">Useful scripts for Trainz Railroad Simulator.</p>
     </div>
 
     <div class="tools-grid">
-      <!-- Universal Fixer Tool Box -->
       <div class="tool-box">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-coastal-blue); text-transform: uppercase;">Trainz Utility</span>
-          <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 10px; border-radius: var(--radius-pill); font-weight: 700;">v1.1 • Safe</span>
+          <span style="font-size: 0.75rem; background: rgba(16,185,129,0.15); color: #34d399; padding: 2px 10px; border-radius: var(--radius-pill); font-weight: 700;">v1.1 • Safe</span>
         </div>
 
-        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; color: #fff;">Trainz Universal Asset Fixer</h2>
+        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; color: #fff;">Trainz Asset Fixer</h2>
         <p style="color: var(--text-secondary); font-size: 0.94rem; line-height: 1.6;">
-          A safe, non-destructive Python repair utility designed to resolve Content Manager validation and script errors across TRS19, TRS22, and Trainz Plus.
+          A Python script that finds and fixes specific Content Manager errors in TRS19, TRS22, and Trainz Plus. Think of it as a targeted repair and warning tool, not a catch-all fixer.
         </p>
 
         <ul class="tool-feature-check">
-          <li>🛡️ <strong>100% Non-Destructive:</strong> Creates <code>.bak</code> backups before modifying any configuration.</li>
-          <li>🧪 <strong>Dry-Run Mode:</strong> Preview all repairs with <code>--dry-run</code> without touching disk.</li>
-          <li>🔒 <strong>v1.1 Security:</strong> Path traversal prevention, multi-encoding auto-detection, and comment-aware syntax parser.</li>
-          <li>🚂 <strong>VE146 Bogey Repair:</strong> Upgrades legacy root bogey tags into modern bogey containers.</li>
-          <li>🎨 <strong>Textures & Sounds:</strong> Generates missing <code>texture.txt</code> and clean sound stubs (VE10/VE65).</li>
-          <li>💻 <strong>Cross-Platform:</strong> Works cleanly on Windows, Linux (Steam/Proton), and macOS.</li>
+          <li>🛡️ <strong>Backup first:</strong> Creates <code>.bak</code> copies before changing anything — bogey conversions always get their own backup even with <code>--no-backup</code>.</li>
+          <li>🧪 <strong>Dry-run mode:</strong> Use <code>--dry-run</code> to preview what would change — nothing is written.</li>
+          <li>🚂 <strong>VE146 — Old bogey tags:</strong> Converts legacy root bogey lines to the modern <code>bogeys { }</code> block.</li>
+          <li>🎨 <strong>VE65 — Missing texture stubs:</strong> Creates <code>.texture.txt</code> files so the validator stops complaining. Asset may still look wrong without a real texture.</li>
+          <li>🔊 <strong>VE10 / VE103 — Missing sounds:</strong> Writes a silent WAV stub. Sound slot is filled but will be silent until replaced.</li>
+          <li>⚠️ <strong>VE179 — Bad region:</strong> Warns only — the right region KUID is project-specific and must be set in Content Manager.</li>
+          <li>⚠️ <strong>Brace errors:</strong> Warns about mismatched <code>{ }</code> — does not auto-"fix", as the correct location can't be guessed.</li>
         </ul>
 
-        <div style="margin-top: auto; display: flex; gap: 12px; flex-wrap: wrap; padding-top: 16px;">
+        <div style="margin-top: auto; padding-top: 16px;">
           <a href="./tools/trainz_universal_fixer.py" download="trainz_universal_fixer.py" class="btn-hero-primary" style="font-size: 0.9rem; padding: 10px 22px;">
-            📥 Download Fixer (.py)
-          </a>
-          <a href="./tools/README_FIXER.md" target="_blank" class="btn-hero-secondary" style="font-size: 0.9rem; padding: 10px 20px;">
-            📖 Documentation
+            📥 Download (.py)
           </a>
         </div>
-      </div>
 
-      <!-- Custom Content Placeholder -->
-      <div class="tool-box">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-brass); text-transform: uppercase;">Community Releases</span>
-          <span style="font-size: 0.75rem; background: var(--color-brass-glow); color: var(--color-brass); padding: 2px 10px; border-radius: var(--radius-pill); font-weight: 700;">In Progress</span>
-        </div>
+        <div class="docs-accordion">
+          <button class="docs-accordion-header" aria-expanded="false" id="docs-toggle">
+            📖 How to use &amp; limitations
+            <span class="docs-accordion-arrow">▼</span>
+          </button>
+          <div class="docs-accordion-body" id="docs-body">
+            <h3>Requirements</h3>
+            <ul>
+              <li>Python 3.7 or newer — Windows, Linux, or macOS</li>
+              <li>No extra libraries needed</li>
+            </ul>
 
-        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; color: #fff;">Island Engines Reskins & Assets</h2>
-        <p style="color: var(--text-secondary); font-size: 0.94rem; line-height: 1.6;">
-          Locomotive reskins, custom rolling stock variants, and scenery items used in <em>Island Engines</em> episodes will be made available for download here with permission from original authors.
-        </p>
+            <h3>Usage</h3>
+            <ul>
+              <li>Auto-detect Trainz folder: <code>python3 trainz_universal_fixer.py</code></li>
+              <li>Preview only (safe): <code>python3 trainz_universal_fixer.py --dry-run</code></li>
+              <li>Fix one asset: <code>python3 trainz_universal_fixer.py --path "path/to/asset"</code></li>
+              <li>Fix whole editing folder: <code>python3 trainz_universal_fixer.py --path "path/to/editing"</code></li>
+            </ul>
 
-        <div style="margin-top: auto; padding-top: 48px;">
-          <span style="font-size: 0.88rem; color: var(--text-muted); font-style: italic;">
-            📦 Packages will be published alongside new episode releases.
-          </span>
+            <h3>What it does NOT fix</h3>
+            <div class="docs-warn">
+              VE39 / VE68 (texture sizes), VE13 (category-class), VE48 (trainz-build), VE217 (.m.reflect renaming), and thumbnails are <strong>not handled</strong>. These require manual editing.
+            </div>
+
+            <h3>A note on stubs</h3>
+            <ul>
+              <li>Texture stubs stop the validator error but the asset may still look broken — replace with a real texture when possible.</li>
+              <li>Sound stubs are silent — they exist only to suppress VE10/VE103, not to restore missing audio.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-
   </main>
 
   <footer class="studio-footer">
     <div class="container">
       <p><strong>Island Engines</strong> — An independent fan production filmed in Trainz Railroad Simulator.</p>
-      <p>
-        <em>Thomas & Friends™</em> is copyright Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family. 
-        All models and routes belong to their respective community creators. 
-        Orchestral reorchestrations by <a href="https://www.youtube.com/@OtterBoiMilo" target="_blank" rel="noopener noreferrer">Milo the Otter</a>.
-      </p>
-      <p style="margin-top: 12px; font-size: 0.78rem; color: var(--text-muted);">
-        🤖 Built with AI assistance for code development & open transparency • Hosted on GitHub Pages
-      </p>
+      <p><em>Thomas &amp; Friends™</em> is copyright Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family. All models and routes belong to their respective community creators. Orchestral reorchestrations by <a href="https://www.youtube.com/@OtterBoiMilo" target="_blank" rel="noopener noreferrer">Milo the Otter</a>.</p>
+      <p style="margin-top: 12px; font-size: 0.78rem; color: var(--text-muted);">🤖 Built with AI assistance for code development &amp; open transparency • Hosted on GitHub Pages</p>
     </div>
   </footer>
 
   <script src="main.js"></script>
+  <script>
+    (function () {
+      var btn = document.getElementById('docs-toggle');
+      var body = document.getElementById('docs-body');
+      if (btn && body) {
+        btn.addEventListener('click', function () {
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+          body.classList.toggle('is-open', !open);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

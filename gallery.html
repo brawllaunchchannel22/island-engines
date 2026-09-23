@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Island Engines</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    (function() {
+      if (localStorage.getItem('island_engines_ai_notice_dismissed') === '1') {
+        document.documentElement.classList.add('hide-ai-notice');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <div class="ai-notice-bar" id="ai-notice-bar">
+    <div class="ai-notice-text">
+      🤖 <strong>AI Transparency:</strong> This page was built with <span>AI assistance</span>.
+    </div>
+    <button type="button" class="ai-notice-dismiss" id="ai-notice-dismiss" aria-label="Dismiss">✕</button>
+  </div>
+
+  <header class="site-nav-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="studio-brand">
+        <div class="studio-logo-badge"><img src="assets/images/island-engines-logo.png" alt="Island Engines Logo" /></div>
+        <div class="studio-title-box">
+          <h1>Island Engines</h1>
+          <p>Gallery</p>
+        </div>
+      </a>
+      <nav class="nav-links-row">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="episodes.html" class="nav-item">Episodes</a>
+        <a href="gallery.html" class="nav-item active">Gallery</a>
+        <a href="other-sites.html" class="nav-item">Other Sites</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+        <a href="credits/index.html" class="nav-item credits-btn">📋 Video Credits</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="margin-top: 16px; margin-bottom: 28px;">
+      <a href="index.html" style="color: var(--color-coastal-blue); text-decoration: none; font-size: 0.88rem; font-weight: 600;">← Back to Home</a>
+      <h1 class="section-title" style="font-size: 2.4rem; margin-top: 12px;">📸 Gallery</h1>
+      <p class="section-subtitle">Production stills — click to view full size.</p>
+    </div>
+
+    <p style="font-family:var(--font-heading);font-size:0.8rem;font-weight:800;color:var(--color-brass);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">
+      Episode 1 — Slippery Rails
+    </p>
+
+    <div class="gallery-grid">
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-brendam-harbour-morning.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-brendam-harbour-morning.png" alt="" loading="lazy" /></div>
+      </div>
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-brendam-henry-rain.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-brendam-henry-rain.png" alt="" loading="lazy" /></div>
+      </div>
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-thomas-henry-warning.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-thomas-henry-warning.png" alt="" loading="lazy" /></div>
+      </div>
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-coastal-storm-night.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-coastal-storm-night.png" alt="" loading="lazy" /></div>
+      </div>
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-signalman-tower.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-signalman-tower.png" alt="" loading="lazy" /></div>
+      </div>
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-signalman-close.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-signalman-close.png" alt="" loading="lazy" /></div>
+      </div>
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-henry-stranded-forest.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-henry-stranded-forest.png" alt="" loading="lazy" /></div>
+      </div>
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-henry-slipping-gradient.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-henry-slipping-gradient.png" alt="" loading="lazy" /></div>
+      </div>
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-rescue-toby-breakdown.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-rescue-toby-breakdown.png" alt="" loading="lazy" /></div>
+      </div>
+      <div class="gallery-card lightbox-trigger" data-full="assets/images/ep1-fat-controller-morning.png" data-caption="">
+        <div class="gallery-img-wrap"><img src="assets/images/ep1-fat-controller-morning.png" alt="" loading="lazy" /></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="image-lightbox" class="lightbox-backdrop" aria-hidden="true">
+    <div class="lightbox-dialog">
+      <button id="lightbox-close-btn" class="lightbox-close" aria-label="Close image">✕</button>
+      <button id="lightbox-prev-btn" class="lightbox-nav-btn lightbox-prev" aria-label="Previous image" title="Previous (Left Arrow)">‹</button>
+      <button id="lightbox-next-btn" class="lightbox-nav-btn lightbox-next" aria-label="Next image" title="Next (Right Arrow)">›</button>
+      <div class="lightbox-media-box"><img id="lightbox-img" src="" alt="" /></div>
+      <div id="lightbox-caption" class="lightbox-caption-text"></div>
+    </div>
+  </div>
+
+  <footer class="studio-footer">
+    <div class="container">
+      <p><strong>Island Engines</strong> — An independent fan production filmed in Trainz Railroad Simulator.</p>
+      <p><em>Thomas &amp; Friends™</em> is copyright Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family.
+         All models and routes belong to their respective community creators.
+         Orchestral reorchestrations by <a href="https://www.youtube.com/@OtterBoiMilo" target="_blank" rel="noopener noreferrer">Milo the Otter</a>.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
