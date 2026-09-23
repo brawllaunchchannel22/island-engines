@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Credits & Asset List — Thomas Productions</title>
+  <meta name="description" content="Credits and attribution list for Trainz 3D models, music, and assets that may be used in Thomas Productions videos." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="brand">
+        <a href="../" class="back-home-link" style="text-decoration:none; margin-right: 12px; font-size: 1.2rem;" title="Back to Island Engines">🏠 <strong>Island Engines</strong></a>
+        <span class="logo">🚂</span>
+        <div>
+          <h1 class="brand-title">Video Credits & Asset List</h1>
+          <p class="brand-subtitle">Assets, 3D models & music attributed across Island Engines / Thomas Productions</p>
+        </div>
+      </div>
+      <div class="header-stats">
+        <span class="stat-pill ai-pill">🤖 Made with AI</span>
+        <span class="stat-pill"><strong id="stat-total">6,149</strong> Total Items</span>
+        <span class="stat-pill"><strong id="stat-music">312</strong> Music</span>
+        <span class="stat-pill"><strong id="stat-trainz">5,837</strong> Trainz</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+
+    <!-- Honest Disclaimer Box -->
+    <section class="notice-box">
+      <div class="notice-header">
+        <span class="notice-icon">⚠️</span>
+        <strong>About this list:</strong>
+      </div>
+      <p>
+        This page lists Trainz 3D models, scenery items, and music tracks that I may use across my videos. 
+        I made this so I only have to list everything once instead of pasting hundreds of credit lines into every video description.
+      </p>
+      <ul class="notice-list">
+        <li><strong>Not everything here is used in every video:</strong> This is a general catalog of assets I have installed or available for production.</li>
+        <li><strong>Not everything may be free to use:</strong> Some items are private, third-party, or legacy community assets. This page exists purely to provide honest credit and attribution to the original creators.</li>
+        <li><strong>Copyright:</strong> <em>Thomas & Friends™</em> belongs to Mattel / Gullane / The Awdry Family. Classic score composed by Mike O'Donnell & Junior Campbell. Free orchestral reorchestrations by <strong>Milo the Otter</strong>. Trainz models created by the respective community modellers below.</li>
+        <li><strong>AI Note:</strong> This website, catalog structure, and asset scanner were built with AI assistance.</li>
+      </ul>
+    </section>
+
+    <!-- Search and Filter Controls -->
+    <section class="controls-area">
+      <div class="search-row">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search by name, creator, KUID, or track (e.g. Thomas, Milo the Otter, Brendam, Skarloey123)..." 
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button id="clear-search-btn" class="clear-btn" title="Clear">✕</button>
+        </div>
+        <div class="controls-right-actions">
+          <div class="count-indicator" id="results-count">Loading items...</div>
+          <button id="copy-kuids-btn" class="btn-copy-kuids" title="Copy all KUIDs in the current view to clipboard">
+            📋 Copy Visible KUIDs
+          </button>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="tab-filters" id="category-filters">
+        <button class="tab-btn active" data-category="all">All Items</button>
+        <button class="tab-btn" data-category="music">🎵 Music & Themes</button>
+        <button class="tab-btn" data-category="routes">🗺️ Modded Routes & Maps</button>
+        <button class="tab-btn" data-category="rolling_stock">🚂 Engines & Rolling Stock</button>
+        <button class="tab-btn" data-category="buildings">🏢 Buildings & Facilities</button>
+        <button class="tab-btn" data-category="infrastructure">🛤️ Tracks & Roads</button>
+        <button class="tab-btn" data-category="characters">👥 Characters & People</button>
+        <button class="tab-btn" data-category="scenery">🌲 Scenery & Misc</button>
+      </div>
+
+      <!-- Active Author Filter Notification -->
+      <div class="active-author-filter" id="active-filter-bar" style="display: none;">
+        <span>Showing only items by: <strong id="active-author-name">...</strong></span>
+        <button id="reset-author-filter" class="btn-link">Show all</button>
+      </div>
+    </section>
+
+    <!-- Items Grid -->
+    <section class="catalog-grid" id="cards-container">
+      <!-- Injected by app.js -->
+    </section>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <p>No matching items found.</p>
+      <button class="btn-simple" id="reset-search-btn">Reset Search & Filters</button>
+    </div>
+
+    <!-- Community Creators Section -->
+    <section class="creators-section">
+      <h2 class="section-title">Community Creators & Modellers Index</h2>
+      <p class="section-desc">Click any creator to view all their cataloged assets:</p>
+      <div class="creators-cloud" id="authors-container">
+        <!-- Injected by app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <p>Thomas Productions — Credits Directory • Hosted on GitHub Pages</p>
+      <p class="footer-small">Built with AI assistance • Not affiliated with or endorsed by Mattel, Inc. or Gullane (Thomas) Limited.</p>
+    </div>
+  </footer>
+
+  <!-- Toast for KUID copy -->
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

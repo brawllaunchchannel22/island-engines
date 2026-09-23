@@ -1,15 +1,38 @@
-# 🚂 Island Engines
+# 🚂 Island Engines — Official Production Hub & Video Credits
 
-A searchable catalog of 3D models, scenery assets, modded routes, and music reorchestrations that may be used across **Thomas Productions** videos.
+Welcome to the official repository for **Island Engines**, an original Trainz fan-production series filmed in Trainz Railroad Simulator 2022.
 
 🌐 **Live Website:** [https://brawllaunchchannel22.github.io/island-engines/](https://brawllaunchchannel22.github.io/island-engines/)
 
 
 ---
 
-## ⚠️ About this Catalog
-This catalog is maintained so that full attribution, creator recognition, and transparency can be linked in video descriptions with a single URL instead of pasting hundreds of lines into every description.
+## 📂 Project Structure
+```text
+├── index.html                   # Island Engines Home, News, Episode Guide & Community Hub
+├── other-sites.html             # Dedicated Community Directory (20+ creator workshops)
+├── style.css                    # Clean, original, responsive stylesheet (AI-coded transparency)
+├── main.js                      # Episode player, community directory filter, interactions
+├── credits/                     # Comprehensive Video Credits & Attribution Catalog
+│   ├── index.html               # 6,100+ items searchable attribution interface
+│   ├── app.js                   # Instant search, author filter, KUID copy tools
+│   ├── data.js                  # Cleaned catalog database (312 music tracks, 5,837 Trainz models)
+│   └── style.css                # Credits theme styling
+└── tools/                       # Utilities for Trainz Players
+    ├── trainz_universal_fixer.py# Universal, non-destructive Trainz asset repair tool
+    └── README_FIXER.md          # Fixer documentation & usage guide
+```
 
-* **Catalog Scope:** Over 6,100 community assets (engines, rolling stock, figures, modded Sodor routes, scenery) and 312 orchestral reorchestrations by Milo the Otter.
-* **Fair Attribution:** All Trainz models, routes, and custom items are community modifications created by the respective artists and creators credited in this catalog.
-* **Copyright Notice:** *Thomas & Friends™* is copyright Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family. Classic TV series score composed by Mike O'Donnell & Junior Campbell. Reorchestrations by Milo the Otter.
+---
+
+## 🛠️ Included Tools
+* **Trainz Universal Asset Fixer:** A safe, non-destructive Python repair utility that fixes VE146 bogeys, missing textures, missing sound stubs, and syntax errors across TRS19, TRS22, and Trainz Plus.
+* **Credits Auto-Scanner (`update_credits.py`):** Automatically indexes installed TRS22 assets and Milo the Otter reorchestrations.
+
+---
+
+## ⚠️ Copyright & Community Attribution
+* *Thomas & Friends™* belongs to Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family.
+* Original classic television series score composed by Mike O'Donnell & Junior Campbell.
+* Free orchestral reorchestrations by **Milo the Otter**.
+* 3D models and routes created by the community artists and modellers credited in `/credits/`.

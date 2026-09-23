@@ -3,129 +3,223 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video Credits & Asset List — Thomas Productions</title>
-  <meta name="description" content="Credits and attribution list for Trainz 3D models, music, and assets that may be used in Thomas Productions videos." />
+  <title>Island Engines — Official Production Hub</title>
+  <meta name="description" content="Official website for the Island Engines Trainz fan production series. Episodes, news, community workshops directory, tools, and comprehensive video credits." />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Top Header -->
-  <header class="header">
-    <div class="container header-container">
-      <div class="brand">
-        <span class="logo">🚂</span>
-        <div>
-          <h1 class="brand-title">Thomas Productions — Video Credits</h1>
-          <p class="brand-subtitle">Assets, 3D models & music that may be used in my videos</p>
+  <!-- AI Transparency Notice -->
+  <div class="ai-transparency-banner">
+    🤖 <strong>AI Transparency:</strong> This website code, tools, and asset scanner were built with <span>AI assistance</span> for open development.
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#home" class="brand">
+        <span class="brand-icon">🚂</span>
+        <div class="brand-text">
+          <h1>Island Engines</h1>
+          <p>A Trainz Fan Production</p>
         </div>
-      </div>
-      <div class="header-stats">
-        <span class="stat-pill ai-pill">🤖 Made with AI</span>
-        <span class="stat-pill"><strong id="stat-total">6,149</strong> Total Items</span>
-        <span class="stat-pill"><strong id="stat-music">312</strong> Music</span>
-        <span class="stat-pill"><strong id="stat-trainz">5,837</strong> Trainz</span>
-      </div>
+      </a>
+      <nav class="site-nav">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#news" class="nav-link">News</a>
+        <a href="#episodes" class="nav-link">Episodes</a>
+        <a href="#sites" class="nav-link">Other Great Sites</a>
+        <a href="#tools" class="nav-link">Downloads & Tools</a>
+        <a href="./credits/" class="nav-link credits-highlight" title="Comprehensive Attribution Catalog">📋 Video Credits</a>
+      </nav>
     </div>
   </header>
 
-  <main class="container main-content">
+  <main class="container">
 
-    <!-- Honest Disclaimer Box -->
-    <section class="notice-box">
-      <div class="notice-header">
-        <span class="notice-icon">⚠️</span>
-        <strong>About this list:</strong>
-      </div>
-      <p>
-        This page lists Trainz 3D models, scenery items, and music tracks that I may use across my videos. 
-        I made this so I only have to list everything once instead of pasting hundreds of credit lines into every video description.
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-badge">🎬 Original Trainz Series Production</div>
+      <h2 class="hero-title">Stories from the <span>Island of Sodor</span></h2>
+      <p class="hero-subtitle">
+        Welcome to the official hub for <strong>Island Engines</strong>. 
+        Featuring classic railway storytelling, atmospheric Trainz cinematography, orchestral scores by Milo the Otter, 
+        and authentic community 3D models.
       </p>
-      <ul class="notice-list">
-        <li><strong>Not everything here is used in every video:</strong> This is a general catalog of assets I have installed or available for production.</li>
-        <li><strong>Not everything may be free to use:</strong> Some items are private, third-party, or legacy community assets. This page exists purely to provide honest credit and attribution to the original creators.</li>
-        <li><strong>Copyright:</strong> <em>Thomas & Friends™</em> belongs to Mattel / Gullane / The Awdry Family. Classic score composed by Mike O'Donnell & Junior Campbell. Free orchestral reorchestrations by <strong>Milo the Otter</strong>. Trainz models created by the respective community modellers below.</li>
-        <li><strong>AI Note:</strong> This website, catalog structure, and asset scanner were built with AI assistance.</li>
-      </ul>
+      <div class="hero-actions">
+        <a href="#episodes" class="btn-primary">▶ View Episode Guide</a>
+        <a href="./credits/" class="btn-secondary">📋 Explore Video Credits (6,100+ Assets)</a>
+        <a href="#sites" class="btn-secondary">🌐 Community Sites Directory</a>
+      </div>
     </section>
 
-    <!-- Search and Filter Controls -->
-    <section class="controls-area">
-      <div class="search-row">
-        <div class="search-bar">
-          <span class="search-icon">🔍</span>
-          <input 
-            type="text" 
-            id="search-input" 
-            placeholder="Search by name, creator, KUID, or track (e.g. Thomas, Milo the Otter, Brendam, Skarloey123)..." 
-            autocomplete="off"
-            spellcheck="false"
-          />
-          <button id="clear-search-btn" class="clear-btn" title="Clear">✕</button>
+    <!-- News & Production Updates -->
+    <section id="news" style="margin-bottom: 48px;">
+      <div class="section-header">
+        <h2 class="section-title">📰 Production News & Updates</h2>
+        <p class="section-desc">Latest announcements on filming, scripts, and website releases.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-tag">Production Status</div>
+          <h3 class="card-title">Island Engines Series in Development</h3>
+          <p class="card-body">
+            Filming is actively underway using Trainz Railroad Simulator 2022. 
+            All episodes feature custom sound mixing, classic TV-series inspired lighting, and authentic Sodor routes. 
+            Episodes will premiere on YouTube once rendering and final audio mastering are complete.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.8rem; color: var(--text-dim);">September 2026</span>
+            <a href="https://www.youtube.com/@brawllaunchchannel" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">YouTube Channel ↗</a>
+          </div>
         </div>
-        <div class="controls-right-actions">
-          <div class="count-indicator" id="results-count">Loading items...</div>
-          <button id="copy-kuids-btn" class="btn-copy-kuids" title="Copy all KUIDs in the current view to clipboard">
-            📋 Copy Visible KUIDs
-          </button>
+
+        <div class="card">
+          <div class="card-tag">Tools Release</div>
+          <h3 class="card-title">Universal Trainz Asset Fixer Released</h3>
+          <p class="card-body">
+            We have released an open-source, non-destructive Python repair tool for Trainz players. 
+            It automatically fixes common Content Manager errors like VE146 (bogeys), missing textures, missing sound stubs, 
+            and syntax issues without deleting user files.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.8rem; color: var(--text-dim);">Open Source Tool</span>
+            <a href="#tools" class="btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">Get Tool ↓</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Episodes Guide & Video Premiere -->
+    <section id="episodes" style="margin-bottom: 48px;">
+      <div class="section-header">
+        <h2 class="section-title">🎬 Episode Guide</h2>
+        <p class="section-desc">Episodes of Island Engines will appear here as they are released on YouTube.</p>
+      </div>
+
+      <!-- Playlist / Premiere Status Card -->
+      <div class="yt-playlist-box">
+        <div class="yt-status-card">
+          <div class="yt-status-icon">🍿</div>
+          <h3 class="yt-status-title">Series Premiere Coming Soon</h3>
+          <p class="yt-status-msg">
+            The debut episode is currently in post-production. Subscribe to the channel to get notified the moment the premiere goes live!
+          </p>
+          <a href="https://www.youtube.com/@brawllaunchchannel?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            🔔 Subscribe on YouTube
+          </a>
         </div>
       </div>
 
-      <!-- Categories -->
-      <div class="tab-filters" id="category-filters">
-        <button class="tab-btn active" data-category="all">All Items</button>
-        <button class="tab-btn" data-category="music">🎵 Music & Themes</button>
-        <button class="tab-btn" data-category="routes">🗺️ Modded Routes & Maps</button>
-        <button class="tab-btn" data-category="rolling_stock">🚂 Engines & Rolling Stock</button>
-        <button class="tab-btn" data-category="buildings">🏢 Buildings & Facilities</button>
-        <button class="tab-btn" data-category="infrastructure">🛤️ Tracks & Roads</button>
-        <button class="tab-btn" data-category="characters">👥 Characters & People</button>
-        <button class="tab-btn" data-category="scenery">🌲 Scenery & Misc</button>
-      </div>
-
-      <!-- Active Author Filter Notification -->
-      <div class="active-author-filter" id="active-filter-bar" style="display: none;">
-        <span>Showing only items by: <strong id="active-author-name">...</strong></span>
-        <button id="reset-author-filter" class="btn-link">Show all</button>
+      <!-- Episode Cards (Injected by main.js) -->
+      <div class="grid-2" id="episodes-container">
+        <!-- Rendered by main.js -->
       </div>
     </section>
 
-    <!-- Items Grid -->
-    <section class="catalog-grid" id="cards-container">
-      <!-- Injected by app.js -->
+    <!-- Other Great Sites (Community Affiliates Directory) -->
+    <section id="sites" style="margin-bottom: 48px;">
+      <div class="section-header">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 class="section-title">🌐 Other Great Sites & Community Workshops</h2>
+            <p class="section-desc">Explore the wonderful creators, workshops, and 3D modellers across the Trainz Thomas community.</p>
+          </div>
+          <span id="site-count-indicator" style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 600;">20 community sites</span>
+        </div>
+      </div>
+
+      <!-- Search Filter Bar -->
+      <div class="filter-bar">
+        <input 
+          type="text" 
+          id="site-search-input" 
+          class="search-input" 
+          placeholder="🔍 Search community sites (e.g. Boilersmiths, Crovan's Gate, Mid Sodor, Westernroutes)..." 
+        />
+      </div>
+
+      <!-- 20 Community Sites Grid (Injected by main.js) -->
+      <div class="grid-3" id="community-sites-container">
+        <!-- Populated dynamically by main.js -->
+      </div>
     </section>
 
-    <!-- Empty State -->
-    <div class="empty-state" id="empty-state" style="display: none;">
-      <p>No matching items found.</p>
-      <button class="btn-simple" id="reset-search-btn">Reset Search & Filters</button>
-    </div>
-
-    <!-- Community Creators Section -->
-    <section class="creators-section">
-      <h2 class="section-title">Community Creators & Modellers Index</h2>
-      <p class="section-desc">Click any creator to view all their cataloged assets:</p>
-      <div class="creators-cloud" id="authors-container">
-        <!-- Injected by app.js -->
+    <!-- Downloads & Tools Section -->
+    <section id="tools" style="margin-bottom: 48px;">
+      <div class="section-header">
+        <h2 class="section-title">🛠️ Downloads & Community Tools</h2>
+        <p class="section-desc">Helpful utilities for Trainz players and content creators.</p>
       </div>
+
+      <div class="grid-2">
+        <!-- Universal Fixer Tool -->
+        <div class="card" style="border-color: rgba(56, 189, 248, 0.4);">
+          <div class="card-tag">Utility • Universal Python Script</div>
+          <h3 class="card-title">Trainz Universal Asset Fixer</h3>
+          <p class="card-body">
+            A safe, non-destructive script designed to fix Content Manager errors across TRS19, TRS22, and Trainz Plus.
+            <br><br>
+            • <strong>Non-Destructive:</strong> Creates <code>.bak</code> backups before touching files.<br>
+            • <strong>Dry-Run Mode:</strong> Test fixes safely with <code>--dry-run</code>.<br>
+            • <strong>Repairs:</strong> VE146 bogeys, missing <code>texture.txt</code>, invalid region strings, and sound stubs.
+          </p>
+          <div class="card-footer">
+            <a href="./tools/trainz_universal_fixer.py" download="trainz_universal_fixer.py" class="btn-primary" style="font-size: 0.9rem;">
+              📥 Download Fixer (.py)
+            </a>
+            <a href="./tools/README_FIXER.md" target="_blank" class="btn-secondary" style="font-size: 0.9rem;">
+              📖 Documentation
+            </a>
+          </div>
+        </div>
+
+        <!-- Custom Content Placeholder -->
+        <div class="card">
+          <div class="card-tag">Content Showcase</div>
+          <h3 class="card-title">Custom Reskins & Rolling Stock</h3>
+          <p class="card-body">
+            Custom modifications, locomotive reskins, and scenery props created for *Island Engines* will be shared here once finalized and approved by their respective base model creators.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 600;">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Credits Callout Banner -->
+    <section style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 36px; text-align: center; margin-bottom: 48px;">
+      <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">Honest Attribution & Community Credits</h3>
+      <p style="color: var(--text-muted); max-width: 640px; margin: 0 auto 24px auto;">
+        Our production relies on the talent of dozens of community modellers, route builders, and musicians. 
+        Explore our comprehensive catalog of <strong>over 6,100 curated assets</strong> with complete creator attribution and KUIDs.
+      </p>
+      <a href="./credits/" class="btn-primary" style="font-size: 1rem;">
+        📋 Open Video Credits Catalog
+      </a>
     </section>
 
   </main>
 
-  <footer class="footer">
-    <div class="container footer-container">
-      <p>Thomas Productions — Credits Directory • Hosted on GitHub Pages</p>
-      <p class="footer-small">Built with AI assistance • Not affiliated with or endorsed by Mattel, Inc. or Gullane (Thomas) Limited.</p>
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>Island Engines</strong> — A fan-made production filmed in Trainz Railroad Simulator.</p>
+      <p>
+        <em>Thomas & Friends™</em> is copyright Mattel, Inc., Gullane (Thomas) Limited, and The Awdry Family. 
+        This is an unofficial non-profit fan project. Original television score composed by Mike O'Donnell & Junior Campbell. 
+        Reorchestrations by <a href="https://soundcloud.com" target="_blank" rel="noopener">Milo the Otter</a>.
+      </p>
+      <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-dim);">
+        🤖 Built with AI assistance for code development & open transparency • Hosted on GitHub Pages
+      </p>
     </div>
   </footer>
 
-  <!-- Toast for KUID copy -->
-  <div id="toast" class="toast">Copied to clipboard!</div>
-
-  <!-- Scripts -->
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
