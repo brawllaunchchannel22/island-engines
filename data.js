@@ -27,10 +27,10 @@ const CREDITS_DATA = {
     ]
   },
   "stats": {
-    "total_music": 312,
+    "total_music": 313,
     "total_trainz": 5837,
     "total_authors": 66,
-    "total_items": 6149
+    "total_items": 6150
   },
   "music": [
     {
@@ -3135,6 +3135,16 @@ const CREDITS_DATA = {
     },
     {
       "id": "m_311",
+      "title": "Rosie's Theme (HiT Era Themes Reorchestrated) (Free to Use)0001",
+      "composer": "Mike O'Donnell & Junior Campbell",
+      "arranger": "Milo the Otter",
+      "source": "Milo the Otter (Free to Use Reorchestrations)",
+      "category": "music",
+      "tag": "Milo the Otter Reorchestration",
+      "file_ext": "WAV"
+    },
+    {
+      "id": "m_312",
       "title": "Jack & the Pack's Theme (HiT Era Themes Reorchestrated) (Free to Use)",
       "composer": "Mike O'Donnell & Junior Campbell",
       "arranger": "Milo the Otter",
@@ -3144,7 +3154,7 @@ const CREDITS_DATA = {
       "file_ext": "MP3"
     },
     {
-      "id": "m_312",
+      "id": "m_313",
       "title": "Donald & Douglas' Theme (HiT Era Themes Reorchestrated) (Free to Use)",
       "composer": "Mike O'Donnell & Junior Campbell",
       "arranger": "Milo the Otter",
